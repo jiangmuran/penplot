@@ -51,6 +51,7 @@ def _templates(ctx, d):
         try:
             with open(fp, encoding='utf-8') as f:
                 raw = json.load(f)
+            raw = _resolve_assets(ctx, d, raw)
             doc = ProjectDoc.model_validate(raw).model_dump(by_alias=True)
         except Exception as ex:
             log.warning('seed template %s: %s', e.get('id'), ex)
@@ -68,6 +69,50 @@ def _templates(ctx, d):
                            'meta=? WHERE id=?', (e['name'], jdump(doc), now, jdump(meta), pid))
         n += 1
     return n
+
+
+ASSET_PREFIX = 'asset:'
+_ASSET_KINDS = {'.svg': 'svg', '.dxf': 'dxf', '.png': 'image', '.jpg': 'image', '.jpeg': 'image',
+                '.webp': 'image', '.gcode': 'gcode', '.nc': 'gcode', '.pdf': 'pdf'}
+
+
+def _asset_file_id(ctx, d, name):
+    """seed/assets/<name> -> files-library id (imported once, deduped by sha256)."""
+    path = os.path.realpath(os.path.join(d, 'assets', name))
+    if not path.startswith(os.path.realpath(os.path.join(d, 'assets')) + os.sep) or not os.path.isfile(path):
+        raise ValueError('seed asset missing: %s' % name)
+    with open(path, 'rb') as f:
+        data = f.read()
+    sha = hashlib.sha256(data).hexdigest()
+    row = ctx.db.one('SELECT id FROM files WHERE sha256=?', (sha,))
+    if row:
+        return row['id']
+    ext = os.path.splitext(name)[1].lower()
+    kind = _ASSET_KINDS.get(ext, 'asset')
+    meta = {'seed': True}
+    if kind == 'svg':
+        try:
+            from ..importers.svg import load_svg
+            _paths, info = load_svg(path)
+            meta.update({k: v for k, v in (info or {}).items() if isinstance(v, (int, float, str, list, dict))})
+        except Exception as ex:
+            log.warning('seed asset %s: %s', name, ex)
+    info = ctx.files.add_bytes(data, name, kind, tags=['模板素材'], meta=meta)
+    return info['id'] if isinstance(info, dict) else info
+
+
+def _resolve_assets(ctx, d, doc):
+    """Replace "asset:<file>" references (element props.file_id, page
+    background.file_id) with library file ids, importing seed/assets files."""
+    def fix(obj):
+        fid = obj.get('file_id') if isinstance(obj, dict) else None
+        if isinstance(fid, str) and fid.startswith(ASSET_PREFIX):
+            obj['file_id'] = _asset_file_id(ctx, d, fid[len(ASSET_PREFIX):])
+    for pg in doc.get('pages') or []:
+        fix(pg.get('background') or {})
+        for el in pg.get('elements') or []:
+            fix(el.get('props') or {})
+    return doc
 
 
 def _samples(ctx, d):

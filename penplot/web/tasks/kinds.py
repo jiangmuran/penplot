@@ -173,7 +173,7 @@ def ttf_convert(args, progress):
     chars = charset_chars(args.get('charset') or 'gb2312-1', args.get('chars'))
     progress(0.01, '读取字体')
     f = convert_ttf(args['src'], args['dst'], chars=chars, mode=args.get('mode', 'skeleton'),
-                    size_px=int(args.get('size_px', 160)), face_index=int(args.get('face_index', 0)),
+                    size_px=int(args.get('size_px', 256)), face_index=int(args.get('face_index', 0)),
                     simplify_tol=float(args.get('simplify_tol', 1.2)), name=args.get('name'),
                     progress=progress)
     miss = ''.join(c for c in f.missing if not c.isspace())

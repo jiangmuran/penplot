@@ -59,7 +59,7 @@ LIST="$(mktemp)"
 git ls-files --cached --others --exclude-standard -- penplot configs seed deploy pyproject.toml \
   requirements-web.lock README.md | grep -v -E '(^|/)core(\.[0-9]+)?$|\.db$|\.env$|__pycache__' > "$LIST"
 find penplot/web/static -type f >> "$LIST"
-rsync -az --delete $LINK --files-from="$LIST" ./ "$HOST:/opt/penplot/releases/$TS/"
+rsync -az --chmod=Da+rx,Fa+r --delete $LINK --files-from="$LIST" ./ "$HOST:/opt/penplot/releases/$TS/"
 rm -f "$LIST"
 
 echo "== 5 deps"

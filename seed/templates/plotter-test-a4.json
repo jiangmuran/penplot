@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "name": "写字机测试图（A4）",
+  "variables": [],
+  "paper": {
+    "paper_id": "a4-full",
+    "spec": {
+      "name": "A4（无边距）",
+      "width_mm": 210,
+      "height_mm": 297,
+      "margins": {
+        "l": 0,
+        "r": 0,
+        "t": 0,
+        "b": 0
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 20,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    }
+  },
+  "print": {
+    "optimize": true
+  },
+  "pages": [
+    {
+      "id": "p1",
+      "paper": null,
+      "origin": null,
+      "elements": [
+        {
+          "id": "e1",
+          "type": "svg",
+          "transform": {
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 0,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "file_id": "asset:plotter_test_A4.svg",
+            "units": "mm",
+            "flatten_tol_mm": 0.1,
+            "text_mode": "font"
+          },
+          "name": "测试图"
+        }
+      ]
+    }
+  ]
+}

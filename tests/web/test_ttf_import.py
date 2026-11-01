@@ -77,7 +77,7 @@ def test_latin_skeleton_and_outline_metrics(client):
     assert t['state'] == 'done', t
     ol = t['result']['font']['id']
     assert t['result']['glyphs'] == 95
-    assert t['result']['font']['display_name'] == 'DejaVu Sans 描边'
+    assert t['result']['font']['display_name'] == 'DejaVu Sans 空心轮廓'
     assert not leftovers(client)
 
     ids = {f['id'] for f in client.get('/api/v1/fonts').json()}

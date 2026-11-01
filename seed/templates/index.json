@@ -321,6 +321,25 @@
         "penplot-sans"
       ],
       "paper_id": "a4-normal"
+    },
+    {
+      "id": "plotter-test-a4",
+      "file": "plotter-test-a4.json",
+      "name": "写字机测试图（A4）",
+      "category": "测试",
+      "description": "A4 写字机校准测试图（SVG）：四角定位靶、直线/圆/网格/字号梯度等，用来检查尺寸、方向、回差和落笔。整张图是一个可缩放的 SVG 元素：拖角缩放或在右侧输入比例，可缩小到明信片或放到 A3。",
+      "tags": [
+        "测试",
+        "校准",
+        "SVG",
+        "可缩放"
+      ],
+      "sample_data": null,
+      "preview": "previews/plotter-test-a4.png",
+      "preview_svg": "previews/plotter-test-a4.svg",
+      "variables": [],
+      "fonts": [],
+      "paper_id": "a4-full"
     }
   ]
 }

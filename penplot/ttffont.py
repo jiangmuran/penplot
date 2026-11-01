@@ -189,7 +189,7 @@ def font_display_name(tt, mode, fallback=''):
     fam = fam or fallback or 'font'
     if sub and sub.lower() not in ('regular', 'book', 'normal', 'roman', 'standard', '常规', '標準', '标准'):
         fam = '%s %s' % (fam, sub)
-    return fam + (' 手写' if mode == 'skeleton' else ' 描边')
+    return fam + (' 手写' if mode == 'skeleton' else ' 空心轮廓')
 
 
 def _load_cmap(src, face_index=0):
@@ -492,7 +492,7 @@ def outline_glyph(tt, gname, tol=None):
 
 
 # ---------------------------------------------------------------- convert
-def convert_ttf(src, out_psf=None, chars=None, mode='skeleton', size_px=160,
+def convert_ttf(src, out_psf=None, chars=None, mode='skeleton', size_px=256,
                 face_index=0, level2=False, simplify_tol=1.2, name=None,
                 spur=None, progress=None):
     """Convert a system font to .psf.
@@ -540,6 +540,8 @@ def convert_ttf(src, out_psf=None, chars=None, mode='skeleton', size_px=160,
     fam, _sub = face_names(tt)
     sf.family = fam or os.path.splitext(os.path.basename(src))[0]
     sf.name = (name or '').strip() or font_display_name(tt, mode, sf.family)
+    if mode != 'skeleton' and not any(w in sf.name for w in ('轮廓', '描边', 'outline', 'Outline')):
+        sf.name += ' 空心轮廓'          # an outline font writes hollow glyphs: make that visible in the library
     sf.author = 'penplot ttf-' + mode
     sf.type_ordinal = 0 if mode == 'skeleton' else 1
     sf.missing = missing

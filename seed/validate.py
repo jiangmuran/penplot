@@ -106,7 +106,9 @@ def main(argv):
             problems.append('sample %s missing' % t['sample_data'])
         page_papers = [resolve_paper(pg.get('paper') or doc['paper'], seeds) for pg in doc['pages']]
         mc, opts, origin = effective(prof, doc.get('print'), None)
-        res = Resolver(fonts, {}, 'penplot-sans')
+        adir = os.path.join(HERE, 'assets')
+        assets = {'asset:' + fn: os.path.join(adir, fn) for fn in os.listdir(adir)} if os.path.isdir(adir) else {}
+        res = Resolver(fonts, assets, 'penplot-sans')
         try:
             pages = render_document(doc, page_papers, res, mc, origin=origin,
                                     work_area=(300.0, 300.0), opts=opts)

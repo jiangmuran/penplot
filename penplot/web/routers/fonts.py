@@ -87,7 +87,7 @@ async def sample(font_id: str, request: Request, p: R, text: Optional[str] = Non
              responses={202: {'model': TaskRef}})
 async def upload_font(request: Request, p: A, file: UploadFile = File(...),
                       mode: str = Form('skeleton'), charset: str = Form('gb2312-1'),
-                      chars: Optional[str] = Form(None), size_px: int = Form(160),
+                      chars: Optional[str] = Form(None), size_px: int = Form(256),
                       simplify_tol: float = Form(1.2), face_index: int = Form(0),
                       name: Optional[str] = Form(None)):
     c = request.app.state.ctx

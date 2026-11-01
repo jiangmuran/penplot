@@ -354,6 +354,18 @@ def four_line():
     return doc('英文四线格', {'paper_id': 'a4-normal', 'spec': None}, [p], [('sample', '示范字母', 'Aa Bb Cc Dd Ee Ff Gg')])
 
 
+@template('plotter-test-a4', '写字机测试图（A4）', '测试',
+          'A4 写字机校准测试图（SVG）：四角定位靶、直线/圆/网格/字号梯度等，用来检查尺寸、方向、回差和落笔。'
+          '整张图是一个可缩放的 SVG 元素：拖角缩放或在右侧输入比例，可缩小到明信片或放到 A3。',
+          ['测试', '校准', 'SVG', '可缩放'])
+def plotter_test():
+    p = Page()
+    # the chart is drawn edge to edge on a 210×297 sheet: place it at the paper origin, scale 1
+    p._add('svg', 0, 0, {'file_id': 'asset:plotter_test_A4.svg', 'units': 'mm', 'flatten_tol_mm': 0.1,
+                         'text_mode': 'font'}, name='测试图')
+    return doc('写字机测试图（A4）', paper('a4-full', 'A4（无边距）', 210, 297), [p], [])
+
+
 def main():
     index = []
     for t in TEMPLATES:

@@ -31,7 +31,7 @@ export function TtfConvertSheet({ sampleText }: { sampleText?: string }) {
   const [mode, setMode] = React.useState<TtfConvertOptions['mode']>('skeleton')
   const [charset, setCharset] = React.useState<TtfConvertOptions['charset']>('gb2312-1')
   const [chars, setChars] = React.useState('')
-  const [sizePx, setSizePx] = React.useState(160)
+  const [sizePx, setSizePx] = React.useState(256)
   const [simplify, setSimplify] = React.useState(1.2)
   const [face, setFace] = React.useState(0)
   const [busy, setBusy] = React.useState(false)
@@ -120,7 +120,7 @@ export function TtfConvertSheet({ sampleText }: { sampleText?: string }) {
             ) : null}
           </GroupedList>
 
-          <GroupedList header="转换方式" footer={mode === 'skeleton' ? '提取笔画的中心线，写出来是单笔画，适合写字机（推荐）。' : '沿字的外轮廓描边，写出来的字是空心的。'}>
+          <GroupedList header="转换方式" footer={mode === 'skeleton' ? '提取笔画的中心线，写出来是单笔画，适合写字机（推荐）。' : '⚠️ 沿字的外轮廓描一圈，写出来是空心字（每一笔都是两条边线、中间有空腔）。这是给激光雕刻用的，写字机请选「手写单笔画」。'}>
             <FormRow label="模式">
               <Segmented
                 aria-label="转换模式"
@@ -128,7 +128,7 @@ export function TtfConvertSheet({ sampleText }: { sampleText?: string }) {
                 onValueChange={setMode}
                 options={[
                   { value: 'skeleton', label: '手写单笔画' },
-                  { value: 'outline', label: '轮廓' },
+                  { value: 'outline', label: '空心轮廓（激光用）' },
                 ]}
               />
             </FormRow>

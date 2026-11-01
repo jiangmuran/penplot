@@ -77,3 +77,8 @@ core.[0-9]*
 .idea/
 .vscode/
 .DS_Store
+
+# template assets (SVG/images used by built-in templates)
+!seed/assets/
+!seed/assets/**
+!seed/templates/previews/*.svg

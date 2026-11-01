@@ -210,7 +210,7 @@ def test_imports_svg_dxf_image_table_text_and_batch(client, tmp_path):
     assert sorted(j['name'] for j in jobs) == ['demo 张三', 'demo 李四']
     # library
     lst = client.get('/api/v1/files?kind=svg').json()
-    assert [f['id'] for f in lst] == [v['file']['id']]
+    assert [f['id'] for f in lst if '模板素材' not in (f.get('tags') or [])] == [v['file']['id']]
     assert client.get('/api/v1/files/%s/content' % v['file']['id']).content == svg
     assert client.get('/api/v1/files/%s/preview.svg' % _gid(client)).text.startswith('<svg')
     r = client.patch('/api/v1/files/' + v['file']['id'], json={'name': 'x.svg', 'tags': ['a']}, headers=H)
