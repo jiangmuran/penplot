@@ -34,8 +34,9 @@ function useBgState() {
 
 export function BackgroundToggle() {
   const bg = useBgState()
+  const bp = useBreakpoint()
   // regular only: the medium toolbar is already full (View menu / B / inspector cover it there)
-  if (!bg.any || useBreakpoint() !== 'regular') return null
+  if (!bg.any || bp !== 'regular') return null
   return (
     <IconButton label={bg.visible ? '隐藏参考背景' : '显示参考背景'} shortcut="b" active={bg.visible} onClick={() => toggleBackgrounds()}>
       {bg.visible ? <FileImage /> : <ImageOff />}
