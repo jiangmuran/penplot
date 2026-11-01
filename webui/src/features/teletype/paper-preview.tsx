@@ -18,15 +18,18 @@ function placed(d: string, ox: number, oy: number) {
   return d.replace(NUM_PAIR, (_, x: string, y: string) => `${(+x + ox).toFixed(2)} ${(+y + oy).toFixed(2)}`)
 }
 
-/** Per-char placed path, memoised on the (immutable) char object + its glyph string. */
-const pathCache = new WeakMap<Char, { d: string; src: string }>()
+/** Per-char placed path, memoised on the (immutable) char object + its glyph string + the grid it was
+ * placed on. The grid must be part of the key: a char first drawn while the idle sample geometry was still
+ * active (other cell width) otherwise kept that position forever and ran off the right edge. */
+const pathCache = new WeakMap<Char, { d: string; src: string; gk: string }>()
 function charPath(c: Char, g: PaperGeo, glyphs: Map<string, string>) {
   const src = glyphs.get(c.gk)
   if (src == null) return ''
+  const geoKey = `${g.cw}|${g.lh}|${g.margin}`
   const hit = pathCache.get(c)
-  if (hit && hit.src === src) return hit.d
+  if (hit && hit.src === src && hit.gk === geoKey) return hit.d
   const d = placed(src, g.margin + c.col * g.cw, g.margin + c.row * g.lh)
-  pathCache.set(c, { d, src })
+  pathCache.set(c, { d, src, gk: geoKey })
   return d
 }
 

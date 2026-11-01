@@ -209,9 +209,14 @@ class FontGlyphs:
         else:
             ox = (bx0 + bx1) / 2
             bw = bx1 - bx0
-            if bw * k > span * 0.92:
-                k = span * 0.92 / bw
             x0 = span / 2
+            if bw * k > span * 0.92:
+                # too wide for its cell (m, w, W in a proportional font): condense
+                # horizontally only, like a typewriter face - shrinking uniformly
+                # made these letters visibly smaller than their neighbours
+                kx = span * 0.92 / bw
+                h = geo['h']
+                return [[(x0 + (x - ox) * kx, h + (y - self.base) * k) for x, y in s] for s in polys]
         # reference glyphs span y 0..h of the row; shrunk glyphs keep the baseline
         h = geo['h']
         return [[(x0 + (x - ox) * k, h + (y - self.base) * k) for x, y in s] for s in polys]
