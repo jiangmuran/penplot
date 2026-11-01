@@ -82,3 +82,7 @@ core.[0-9]*
 !seed/assets/
 !seed/assets/**
 !seed/templates/previews/*.svg
+
+# never commit converted fonts outside fonts/ (they may derive from non-free fonts)
+/*.psf
+/*.gfont

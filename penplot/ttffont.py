@@ -532,9 +532,9 @@ def convert_ttf(src, out_psf=None, chars=None, mode='skeleton', size_px=256,
         raise TtfError('no_glyphs', '这个字体里没有所选的任何字符（缺 %d 个，例如「%s」）'
                        % (len(missing), ''.join(missing[:10])),
                        {'missing_count': len(missing), 'missing': ''.join(missing[:200])})
-    if out_psf is None:
-        out_psf = os.path.splitext(os.path.basename(src))[0] + \
-            ('-hand.psf' if mode == 'skeleton' else '-outline.psf')
+    # out_psf=None: return the font only. (It used to write <font>-hand.psf into
+    # the current directory silently - a derivative of a possibly non-free font
+    # landing in a working tree is how it ends up published by accident.)
 
     sf = StrokeFont()
     fam, _sub = face_names(tt)
@@ -582,5 +582,6 @@ def convert_ttf(src, out_psf=None, chars=None, mode='skeleton', size_px=256,
         raise TtfError('no_glyphs', '没有转换出任何笔画（字体里可能只有空白字形）')
     if progress is not None:
         progress(0.99, '写入字体文件')
-    write_psf(sf, out_psf)
+    if out_psf:
+        write_psf(sf, out_psf)
     return sf
