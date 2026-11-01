@@ -1,0 +1,76 @@
+{
+  "type": "Grbl",
+  "settings": {
+    "dpi": 96,
+    "useSysDpi": true,
+    "feedRate": 1500,
+    "jogSpeed": 2500,
+    "toolOnDelay": 0.0,
+    "toolOffDelay": 0.0,
+    "nearDst": 0.3,
+    "offsetX": 0.0,
+    "offsetY": 0.0,
+    "rotate": 0.0,
+    "singleStep": false,
+    "autoSetZero": true,
+    "autoConnect": true,
+    "autoSleep": false,
+    "updateStatus": false,
+    "maxImageSize": 4000,
+    "sheetAutoAlignScale": 60,
+    "alertFileComplete": true,
+    "zeroZAtStart": true
+  },
+  "grbl": {
+    "type": "Stepper",
+    "penUpPos": 50,
+    "penDownPos": 0,
+    "ecoServo": false,
+    "zOn": 8.0,
+    "zOff": 0.0,
+    "zSpeed": 5000,
+    "laserS": 1000
+  },
+  "marlin": {
+    "type": "Servo",
+    "penUpPos": 50,
+    "penDownPos": 0,
+    "penUpMM": 0.0,
+    "penDownMM": 2.0,
+    "zSpeed": 3000,
+    "fanSpeed": 255
+  },
+  "ebb": {
+    "mmToSteps": 100,
+    "penUpPos": 12000,
+    "penDownPos": 18000,
+    "penUpSpeed": 750,
+    "penDownSpeed": 750
+  },
+  "kat": {
+    "penUpE": 0.2,
+    "penDownE": 6.0,
+    "penSpeed": 4000,
+    "feedOutY": 420,
+    "parkX": 290
+  },
+  "advanced": {
+    "startGcode": "",
+    "endGcode": "",
+    "macro1": "",
+    "macro2": "",
+    "macro3": "",
+    "zJogStep": 1.0
+  },
+  "axes": {
+    "revxy": false,
+    "xAxeRev": false,
+    "yAxeRev": false,
+    "pos": 0
+  },
+  "print_defaults": {
+    "origin": {
+      "anchor": "content"
+    }
+  }
+}

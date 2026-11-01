@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TELETYPE · 纸上终端</title>
+<link rel="stylesheet" href="/static/xterm.css">
+<script src="/static/xterm.js"></script>
+<style>
+:root{--bg:#16181d;--panel:#1f2229;--line:#2e333d;--fg:#d8dce4;--dim:#8a91a0;
+  --acc:#e8b04a;--ok:#5fd38d;--bad:#ef6b6b;--ink:#1d2a5a;--paper:#fbf9f3}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);
+  font:14px/1.45 system-ui,"PingFang SC","Noto Sans CJK SC",sans-serif}
+header{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid var(--line)}
+h1{font:600 15px ui-monospace,monospace;letter-spacing:.12em;margin:0;color:var(--acc)}
+.pill{padding:2px 9px;border-radius:99px;background:var(--panel);border:1px solid var(--line);
+  font:12px ui-monospace,monospace;color:var(--dim);white-space:nowrap}
+.pill b{color:var(--fg);font-weight:500}
+.pill.ok{border-color:#2f6b49}.pill.bad{border-color:#7a3434;color:var(--bad)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-left:auto}
+.seg button{border:0;border-radius:0;background:var(--panel);padding:6px 14px}
+.seg button.on{background:var(--acc);color:#1a1a1a;font-weight:600}
+main{display:grid;grid-template-columns:minmax(320px,1fr) minmax(380px,1.05fr);gap:14px;
+  padding:14px;height:calc(100% - 51px)}
+.col{display:flex;flex-direction:column;gap:12px;min-height:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px}
+#paperWrap{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:12px;position:relative}
+svg#paper{max-height:100%;max-width:100%;background:var(--paper);border-radius:2px;
+  box-shadow:0 6px 30px #0008}
+#paper .q{stroke:#b9b4a6}#paper .ok{stroke:var(--ink)}#paper .x{stroke:#e7a3a3;stroke-dasharray:.4 .4}
+#paper path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+#cursor{fill:var(--acc);opacity:.55;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+#banner{position:absolute;inset:auto 24px 24px 24px;background:#3a2a10;border:1px solid var(--acc);
+  color:#ffd98a;border-radius:8px;padding:10px 14px;display:none;align-items:center;gap:12px}
+#banner.on{display:flex}
+#banner span{flex:1}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button{background:#2a2e37;color:var(--fg);border:1px solid var(--line);border-radius:7px;
+  padding:6px 11px;font:inherit;cursor:pointer}
+button:hover{border-color:#4a5160}
+button.warn{border-color:#7a3434;color:#ffb4b4}
+button.prim{background:var(--acc);color:#1a1a1a;border-color:var(--acc);font-weight:600}
+button:disabled{opacity:.4;cursor:default}
+#term{flex:1;min-height:0;display:flex;flex-direction:column;background:#0c0e11}
+#xwrap{flex:1;min-height:0;position:relative;padding:10px 12px;overflow:hidden}
+.xt{position:absolute;inset:10px 12px}
+#termHint{border-top:1px solid var(--line);padding:7px 12px;font:12px ui-monospace,monospace;color:var(--dim)}
+#termHint b{color:var(--acc);font-weight:500}
+.panel{padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+label{display:flex;flex-direction:column;gap:3px;font-size:12px;color:var(--dim)}
+input[type=number]{background:#15171c;border:1px solid var(--line);color:var(--fg);border-radius:6px;
+  padding:5px 7px;font:13px ui-monospace,monospace;width:100%}
+#log{font:12px ui-monospace,monospace;color:var(--dim);max-height:84px;overflow:auto;white-space:pre-wrap}
+.jog{display:grid;grid-template-columns:repeat(3,34px);gap:4px}
+.jog button{padding:4px 0}
+.muted{color:var(--dim);font-size:12px}
+</style>
+</head>
+<body>
+<header>
+  <h1>▌TELETYPE</h1>
+  <span class="pill" id="link">连接中…</span>
+  <span class="pill">GRBL <b id="gstate">—</b></span>
+  <span class="pill">笔 <b id="pos">—</b></span>
+  <span class="pill">队列 <b id="pend">0</b></span>
+  <span class="pill">已写 <b id="done">0</b>/<b id="total">0</b> · <b id="rate">0</b> 字/秒</span>
+  <span class="pill">第 <b id="pageNo">1</b> 页 · <b id="grid">—</b></span>
+  <div class="seg" id="modeSeg">
+    <button data-m="type">打字模式</button><button data-m="term">终端模式</button>
+  </div>
+</header>
+<main>
+  <div class="col">
+    <div class="card" id="paperWrap">
+      <svg id="paper" xmlns="http://www.w3.org/2000/svg"></svg>
+      <button id="zoomBtn" style="position:absolute;top:18px;right:18px">整页</button>
+      <div id="banner"><span>纸写满了（或已请求换纸）：笔已回到原点，换上新纸后继续。</span>
+        <button class="prim" id="newSheet">已换纸，继续</button></div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card" id="term">
+      <div id="xwrap"><div class="xt" id="xtPty"></div><div class="xt" id="xtType"></div></div>
+      <div id="termHint"></div>
+    </div>
+    <div class="card panel">
+      <div class="row">
+        <button id="pauseBtn">⏸ 暂停</button>
+        <button class="warn" id="stopBtn">■ 停止并清空队列</button>
+        <button id="intBtn">发送 ^C</button>
+        <button id="paperBtn">换纸</button>
+        <button id="homeBtn">回原点</button>
+        <button id="penBtn">抬笔</button>
+      </div>
+      <div class="row" style="align-items:flex-start;gap:18px">
+        <div>
+          <div class="muted" style="margin-bottom:4px">点动（空闲时）</div>
+          <div class="row" style="gap:10px">
+            <div class="jog">
+              <span></span><button data-j="0,1">↑</button><span></span>
+              <button data-j="-1,0">←</button><button id="originBtn" title="把当前位置设为原点">⌖</button><button data-j="1,0">→</button>
+              <span></span><button data-j="0,-1">↓</button><span></span>
+            </div>
+            <label style="width:64px">步长 mm<input type="number" id="jstep" value="5" step="1" min="0.1"></label>
+          </div>
+        </div>
+        <div style="flex:1">
+          <div class="grid">
+            <label>字高 mm<input type="number" id="s_char_h" step="0.5" min="1.5"></label>
+            <label>书写速度 F<input type="number" id="s_feed" step="500" min="200"></label>
+            <label>行进抬笔 Z<input type="number" id="s_z_up" step="0.5" min="0"></label>
+            <label>落笔 Z<input type="number" id="s_z_down" step="0.5" min="0"></label>
+            <label>纸宽 mm<input type="number" id="s_paper_w"></label>
+            <label>纸高 mm<input type="number" id="s_paper_h"></label>
+            <label>边距 mm<input type="number" id="s_margin" step="1"></label>
+            <label>积压上限(字)<input type="number" id="s_max_backlog" step="100" min="50"></label>
+          </div>
+          <div class="row" style="margin-top:8px"><button id="applyBtn">应用设置</button>
+            <span class="muted" id="setNote">速度/抬笔高度对新字立即生效；字号、纸张在新页生效</span></div>
+        </div>
+      </div>
+      <div id="log"></div>
+    </div>
+  </div>
+</main>
+<script>
+const $ = s => document.querySelector(s);
+const NS = 'http://www.w3.org/2000/svg';
+let S = {mode:'type', cfg:{}, font:null, geo:null, chars:new Map(), row:0, col:0};
+let doneTimes = [];
+
+// ------------------------------------------------------------ api
+async function post(path, body){
+  const r = await fetch(path, {method:'POST', headers:{'Content-Type':'application/json'},
+                               body: JSON.stringify(body||{})});
+  const j = await r.json();
+  if(!j.ok && j.error) addLog('✖ ' + j.error);
+  if(j.note) $('#setNote').textContent = j.note;
+  return j;
+}
+// keystrokes: batched, strictly in order, one request in flight per channel
+function orderedSender(path){
+  let buf = '', busy = false;
+  async function flush(){
+    if(busy || !buf) return;
+    busy = true; const data = buf; buf = '';
+    try { await post(path, {data}); } catch(e){ addLog('✖ 发送失败'); }
+    busy = false; flush();
+  }
+  return d => { buf += d; flush(); };
+}
+const sendPty = orderedSender('/api/pty'), sendType = orderedSender('/api/keys');
+
+// ------------------------------------------------------------ paper
+function glyphPath(ch, row, col){
+  const g = S.geo, u = g.h/6;
+  const x0 = g.margin + col*g.cw + (g.cw - 4*u)/2, y0 = g.margin + row*g.lh;
+  const strokes = S.font.glyphs[ch] || S.font.fallback;
+  return strokes.map(st => 'M' + st.map(([x,y]) =>
+    (x0+x*u).toFixed(2)+' '+(y0+y*u).toFixed(2)).join('L')).join('');
+}
+function drawPaper(){
+  const g = S.geo, svg = $('#paper');
+  svg.innerHTML = '';
+  const m = document.createElementNS(NS,'rect');
+  Object.entries({x:g.margin,y:g.margin,width:g.paper_w-2*g.margin,height:g.paper_h-2*g.margin,
+    fill:'none',stroke:'#e4ddcb','stroke-width':.25,'stroke-dasharray':'1 1'})
+    .forEach(([k,v])=>m.setAttribute(k,v));
+  svg.appendChild(m);
+  const layer = document.createElementNS(NS,'g');
+  layer.id = 'ink'; layer.setAttribute('stroke-width', Math.max(.22, g.h*.07));
+  svg.appendChild(layer);
+  const cur = document.createElementNS(NS,'rect'); cur.id='cursor'; svg.appendChild(cur);
+  const pen = document.createElementNS(NS,'circle'); pen.id='pen';
+  pen.setAttribute('r',1.2); pen.setAttribute('fill','none');
+  pen.setAttribute('stroke','#e0452f'); pen.setAttribute('stroke-width',.4);
+  svg.appendChild(pen);
+  for(const c of S.chars.values()) addCharEl(c);
+  placeCursor();
+}
+function addCharEl(c){
+  if(c.el) return;
+  const p = document.createElementNS(NS,'path');
+  p.setAttribute('d', glyphPath(c.ch, c.row, c.col));
+  p.setAttribute('class', c.st);
+  $('#ink').appendChild(p); c.el = p;
+}
+function setChars(list){
+  for(const [id,ch,row,col,st] of list){
+    if(S.chars.has(id)) continue;
+    const c = {id,ch,row,col,st}; S.chars.set(id,c); addCharEl(c);
+  }
+  counts();
+}
+function placeCursor(){
+  const g = S.geo, c = $('#cursor'); if(!c) return;
+  c.setAttribute('x', g.margin + S.col*g.cw); c.setAttribute('y', g.margin + S.row*g.lh + g.h*1.08);
+  c.setAttribute('width', g.cw*.9); c.setAttribute('height', Math.max(.35, g.h*.12));
+  updateView();
+}
+// view: whole sheet, or a magnified window that follows the cursor
+let follow = true;
+function updateView(){
+  const g = S.geo, svg = $('#paper'); if(!g) return;
+  if(!follow){ svg.setAttribute('viewBox', `0 0 ${g.paper_w} ${g.paper_h}`); return; }
+  const w = g.paper_w, h = w * 0.72;
+  const y = Math.max(0, Math.min(g.paper_h - h, g.margin + S.row*g.lh - h*0.7));
+  svg.setAttribute('viewBox', `0 ${y.toFixed(1)} ${w} ${h.toFixed(1)}`);
+}
+$('#zoomBtn').onclick = ()=>{ follow = !follow; $('#zoomBtn').textContent = follow ? '整页' : '放大跟随'; updateView(); };
+function counts(){
+  let ok=0; for(const c of S.chars.values()) if(c.st==='ok') ok++;
+  $('#done').textContent = ok; $('#total').textContent = S.chars.size;
+}
+function loadPaper(p){
+  S.geo = p.geo; S.row = p.row; S.col = p.col; S.chars = new Map();
+  $('#pageNo').textContent = p.page;
+  $('#grid').textContent = `${p.geo.cols}列×${p.geo.rows}行`;
+  drawPaper(); setChars(p.chars); banner(p.need_paper);
+}
+function banner(on){ $('#banner').classList.toggle('on', !!on); }
+
+// ------------------------------------------------------------ monitor (xterm.js)
+const XT = window.Terminal && (window.Terminal.Terminal || window.Terminal);
+const xtOpts = {cols:80, rows:30, fontSize:13, cursorBlink:true, scrollback:5000,
+  fontFamily:'ui-monospace,"JetBrains Mono",Menlo,monospace',
+  theme:{background:'#0c0e11', foreground:'#d6f5df', cursor:'#e8b04a'}};
+const xPty = new XT(xtOpts), xType = new XT(xtOpts);
+xPty.open($('#xtPty')); xType.open($('#xtType'));
+xPty.onData(d => S.mode === 'term' ? sendPty(d) : null);
+xType.onData(d => S.mode === 'type' ? sendType(d) : null);
+function addLog(m){
+  const l = $('#log'); l.textContent += new Date().toTimeString().slice(0,8)+'  '+m+'\n';
+  l.scrollTop = l.scrollHeight;
+}
+function fitCols(cols){ for(const x of [xPty, xType]) if(x.cols !== cols) x.resize(cols, 30); }
+
+// ------------------------------------------------------------ mode
+function setMode(m){
+  S.mode = m;
+  document.querySelectorAll('#modeSeg button').forEach(b=>b.classList.toggle('on', b.dataset.m===m));
+  const term = m === 'term';
+  $('#xtPty').style.visibility = term ? 'visible' : 'hidden';
+  $('#xtType').style.visibility = term ? 'hidden' : 'visible';
+  $('#termHint').innerHTML = term
+    ? '<b>交互式终端</b>（Orange Pi 上的 bash，可 ssh / python / top）· 点击终端后直接输入 · 会话实时抄写到纸上，全屏程序不上纸'
+    : '<b>打字模式</b> · 点击上方区域后直接打字，每个键立刻写到纸上 · 退格=字车回退（叠打）· 支持中文输入法（标点自动转 ASCII）';
+  (term ? xPty : xType).focus();
+}
+document.querySelectorAll('#modeSeg button').forEach(b=>b.onclick=()=>post('/api/mode',{mode:b.dataset.m}));
+// any stray keypress goes to the active terminal
+document.addEventListener('keydown', e=>{
+  const t = e.target;
+  if(t.closest && (t.closest('.xt') || t.tagName === 'INPUT')) return;
+  if(e.ctrlKey || e.metaKey || e.altKey) return;
+  (S.mode === 'term' ? xPty : xType).focus();
+}, true);
+
+// ------------------------------------------------------------ controls
+let paused = false;
+$('#pauseBtn').onclick = ()=>post('/api/action',{a: paused ? 'resume' : 'pause'});
+$('#stopBtn').onclick = ()=>post('/api/action',{a:'stop'});
+$('#intBtn').onclick = ()=>post('/api/action',{a:'interrupt'});
+$('#paperBtn').onclick = ()=>post('/api/action',{a:'change_paper'});
+$('#newSheet').onclick = ()=>post('/api/action',{a:'new_sheet'});
+$('#homeBtn').onclick = ()=>post('/api/action',{a:'home'});
+$('#penBtn').onclick = ()=>post('/api/action',{a:'pen_up'});
+$('#originBtn').onclick = ()=>post('/api/action',{a:'set_origin'});
+document.querySelectorAll('[data-j]').forEach(b=>b.onclick=()=>{
+  const st = parseFloat($('#jstep').value)||1, [dx,dy] = b.dataset.j.split(',').map(Number);
+  post('/api/jog',{dx:dx*st, dy:dy*st});
+});
+const SET = ['char_h','feed','z_up','z_down','paper_w','paper_h','margin','max_backlog'];
+function showCfg(c){ S.cfg = c; SET.forEach(k=>{ const el=$('#s_'+k); if(document.activeElement!==el) el.value=c[k]; }); }
+$('#applyBtn').onclick = ()=>{
+  const b = {}; SET.forEach(k=>b[k]=parseFloat($('#s_'+k).value));
+  post('/api/settings', b);
+};
+
+// ------------------------------------------------------------ events
+function handle(m){
+  switch(m.t){
+  case 'hello':
+    S.font = m.font; showCfg(m.cfg); loadPaper(m.paper); fitCols(m.cols);
+    xPty.reset(); xPty.write(m.pty_log); xType.reset(); xType.write(m.typed_log);
+    setMode(m.mode); break;
+  case 'pty': xPty.write(m.data); break;
+  case 'typed': xType.write(m.data); break;
+  case 'cols': fitCols(m.cols); break;
+  case 'snapshot': loadPaper(m); break;
+  case 'chars': setChars(m.list); break;
+  case 'ack': { const c = S.chars.get(m.id); if(c && c.st!=='ok'){ c.st='ok'; c.el.setAttribute('class','ok');
+      doneTimes.push(performance.now()); counts(); } break; }
+  case 'dropped': for(const id of m.ids){ const c=S.chars.get(id); if(c){ c.el.remove(); S.chars.delete(id); } } counts(); break;
+  case 'cursor': S.row = m.row; S.col = m.col; placeCursor(); break;
+  case 'mode': setMode(m.mode); break;
+  case 'need_paper': banner(m.on); break;
+  case 'cfg': showCfg(m.cfg); break;
+  case 'log': addLog(m.msg); break;
+  case 'status': {
+    $('#gstate').textContent = m.state; $('#pend').textContent = m.pending;
+    $('#pos').textContent = `X${m.x.toFixed(1)} Y${m.y.toFixed(1)} Z${m.z.toFixed(1)}`;
+    paused = m.paused; $('#pauseBtn').textContent = paused ? '▶ 继续' : '⏸ 暂停';
+    const pen = $('#pen'); if(pen){ pen.setAttribute('cx', m.x); pen.setAttribute('cy', -m.y);
+      pen.setAttribute('fill', m.z > (S.cfg.z_down||8)/2 ? '#e0452f' : 'none'); }
+    break; }
+  }
+}
+setInterval(()=>{ const t = performance.now(); doneTimes = doneTimes.filter(x=>t-x<5000);
+  $('#rate').textContent = (doneTimes.length/5).toFixed(1); }, 500);
+
+function connect(){
+  const es = new EventSource('/events');
+  es.onopen = ()=>{ $('#link').textContent='已连接 Orange Pi'; $('#link').className='pill ok'; };
+  es.onerror = ()=>{ $('#link').textContent='连接断开，重连中…'; $('#link').className='pill bad'; };
+  es.onmessage = e=>handle(JSON.parse(e.data));
+}
+connect();
+</script>
+</body>
+</html>

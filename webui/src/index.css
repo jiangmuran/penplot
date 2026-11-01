@@ -1,0 +1,479 @@
+@import 'tailwindcss';
+
+/* ==========================================================================
+   PenPlot design tokens (02-ux §4). Colours are RGB triples so they can be
+   composed as rgb(var(--x) / a). Values that carry alpha are split into
+   --x (triple) and --x-a (alpha).  Use the Tailwind names below in markup:
+   bg-bg-grouped, text-secondary-label, border-separator, bg-accent/15 …
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+  --blue: 0 122 255;
+  --red: 255 59 48;
+  --green: 52 199 89;
+  --orange: 255 149 0;
+  --yellow: 255 204 0;
+  --teal: 48 176 199;
+  --indigo: 88 86 214;
+  --purple: 175 82 222;
+  --pink: 255 45 85;
+  --gray: 142 142 147;
+  --gray2: 174 174 178;
+  --gray3: 199 199 204;
+  --gray4: 209 209 214;
+  --gray5: 229 229 234;
+  --gray6: 242 242 247;
+  --accent: var(--blue);
+
+  --label: 0 0 0;
+  --secondary-label: 60 60 67;
+  /* HIG uses .60 (≈3.5:1 on white); .72 keeps secondary text ≥4.5:1 on white and on grouped gray. */
+  --secondary-label-a: 0.72;
+  --tertiary-label: 60 60 67;
+  --tertiary-label-a: 0.3;
+  --quaternary-label: 60 60 67;
+  --quaternary-label-a: 0.18;
+
+  --fill: 120 120 128;
+  --fill-a: 0.2;
+  --secondary-fill: 120 120 128;
+  --secondary-fill-a: 0.16;
+  --tertiary-fill: 118 118 128;
+  --tertiary-fill-a: 0.12;
+  --quaternary-fill: 116 116 128;
+  --quaternary-fill-a: 0.08;
+
+  --separator: 60 60 67;
+  --separator-a: 0.29;
+  --opaque-separator: 198 198 200;
+
+  --bg: 255 255 255;
+  --bg-secondary: 242 242 247;
+  --bg-tertiary: 255 255 255;
+  --bg-grouped: 242 242 247;
+  --bg-grouped-secondary: 255 255 255;
+  --bg-elevated: 255 255 255;
+
+  --canvas-desk: 229 229 234;
+  --canvas-paper: 255 255 255;
+  --ink: 28 28 30;
+  --guide: var(--pink);
+  --axis-x: var(--teal);
+  --axis-y: var(--purple);
+  --axis-origin: var(--accent);
+  --travel: var(--indigo);
+  --overridden: var(--orange);
+
+  --on-tint-green: 36 138 61;
+  --on-tint-red: 215 0 21;
+  --on-tint-orange: 201 52 0;
+  --on-tint-blue: 0 64 221;
+  --on-tint-gray: 72 72 74;
+
+  --shadow-k: 1;
+  --shadow-ring: 0 0 0 0.5px rgb(0 0 0 / 0.08);
+
+  /* sizes (px) */
+  --toolbar-h: 52px;
+  --navbar-h: 44px;
+  --tabbar-h: 49px;
+  --machinebar-h: 56px;
+  --sidebar-w: 240px;
+  --inspector-w: 300px;
+  --navigator-w: 200px;
+  --hit: 44px;
+  /* Room kept clear for the floating E-stop (it sits above every sheet/dialog).
+     Regular: right side-sheets start below the toolbar. Compact: bottom sheets pad their content. */
+  --estop-safe-top: calc(var(--toolbar-h) + 8px);
+  --estop-safe-bottom: calc(var(--machinebar-h) + 16px + env(safe-area-inset-bottom));
+
+  /* motion */
+  --dur-instant: 80ms;
+  --dur-fast: 150ms;
+  --dur-base: 220ms;
+  --dur-slow: 320ms;
+  --dur-sheet: 380ms;
+  --motion-scale: 0.96;
+  --motion-shift: 8px;
+  --motion-sheet: 100%;
+  --press-scale: 0.97;
+
+  /* materials */
+  --mat-alpha-sidebar: 0.72;
+  --mat-alpha-toolbar: 0.72;
+  --mat-alpha-thick: 0.86;
+  --mat-alpha-thin: 0.55;
+  --blur-sidebar: saturate(180%) blur(24px);
+  --blur-toolbar: saturate(180%) blur(20px);
+
+  /* typography: macOS density (regular) */
+  --fs-large-title: 26px; --lh-large-title: 32px;
+  --fs-title1: 22px; --lh-title1: 28px;
+  --fs-title2: 17px; --lh-title2: 22px;
+  --fs-title3: 15px; --lh-title3: 20px;
+  --fs-headline: 13px; --lh-headline: 18px;
+  --fs-body: 13px; --lh-body: 20px;
+  --fs-callout: 12px; --lh-callout: 18px;
+  /* Chinese text is never below 12px (05-review §4). */
+  --fs-subheadline: 12px; --lh-subheadline: 17px;
+  --fs-footnote: 12px; --lh-footnote: 16px;
+  --fs-caption: 12px; --lh-caption: 15px;
+  --control-h: 28px;
+  --row-h: 32px;
+}
+
+/* Compact width or touch → iOS sizes ("舒适密度") */
+@media (max-width: 767px), (pointer: coarse) {
+  :root {
+    --fs-large-title: 34px; --lh-large-title: 41px;
+    --fs-title1: 28px; --lh-title1: 34px;
+    --fs-title2: 22px; --lh-title2: 28px;
+    --fs-title3: 20px; --lh-title3: 25px;
+    --fs-headline: 17px; --lh-headline: 22px;
+    --fs-body: 17px; --lh-body: 24px;
+    --fs-callout: 16px; --lh-callout: 22px;
+    --fs-subheadline: 15px; --lh-subheadline: 20px;
+    --fs-footnote: 13px; --lh-footnote: 18px;
+    --fs-caption: 12px; --lh-caption: 16px;
+    --control-h: 44px;
+    --row-h: 44px;
+  }
+}
+:root[data-density='compact'] {
+  --fs-headline: 13px; --lh-headline: 18px;
+  --fs-body: 13px; --lh-body: 20px;
+  --control-h: 28px; --row-h: 32px;
+}
+:root[data-density='comfortable'] {
+  --fs-headline: 17px; --lh-headline: 22px;
+  --fs-body: 17px; --lh-body: 24px;
+  --control-h: 44px; --row-h: 44px;
+}
+
+/* ---------- Dark (forced, or system when not forced light) ---------- */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --blue: 10 132 255; --red: 255 69 58; --green: 48 209 88; --orange: 255 159 10; --yellow: 255 214 10;
+  --teal: 64 200 224; --indigo: 94 92 230; --purple: 191 90 242; --pink: 255 55 95;
+  --gray: 142 142 147; --gray2: 99 99 102; --gray3: 72 72 74; --gray4: 58 58 60; --gray5: 44 44 46; --gray6: 28 28 30;
+  --label: 255 255 255;
+  --secondary-label: 235 235 245; --secondary-label-a: 0.6;
+  --tertiary-label: 235 235 245; --tertiary-label-a: 0.3;
+  --quaternary-label: 235 235 245; --quaternary-label-a: 0.16;
+  --fill: 120 120 128; --fill-a: 0.36;
+  --secondary-fill: 120 120 128; --secondary-fill-a: 0.32;
+  --tertiary-fill: 118 118 128; --tertiary-fill-a: 0.24;
+  --quaternary-fill: 118 118 128; --quaternary-fill-a: 0.18;
+  --separator: 84 84 88; --separator-a: 0.6;
+  --opaque-separator: 56 56 58;
+  --bg: 0 0 0; --bg-secondary: 28 28 30; --bg-tertiary: 44 44 46;
+  --bg-grouped: 0 0 0; --bg-grouped-secondary: 28 28 30; --bg-elevated: 44 44 46;
+  --canvas-desk: 28 28 30; --canvas-paper: 242 242 247; --ink: 28 28 30;
+  --on-tint-green: 48 219 91; --on-tint-red: 255 105 97; --on-tint-orange: 255 179 64; --on-tint-blue: 64 156 255;
+  --on-tint-gray: 210 210 215;
+  --shadow-k: 0.6;
+  --shadow-ring: 0 0 0 0.5px rgb(var(--separator) / var(--separator-a));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --blue: 10 132 255; --red: 255 69 58; --green: 48 209 88; --orange: 255 159 10; --yellow: 255 214 10;
+    --teal: 64 200 224; --indigo: 94 92 230; --purple: 191 90 242; --pink: 255 55 95;
+    --gray: 142 142 147; --gray2: 99 99 102; --gray3: 72 72 74; --gray4: 58 58 60; --gray5: 44 44 46; --gray6: 28 28 30;
+    --label: 255 255 255;
+    --secondary-label: 235 235 245; --secondary-label-a: 0.6;
+    --tertiary-label: 235 235 245; --tertiary-label-a: 0.3;
+    --quaternary-label: 235 235 245; --quaternary-label-a: 0.16;
+    --fill: 120 120 128; --fill-a: 0.36;
+    --secondary-fill: 120 120 128; --secondary-fill-a: 0.32;
+    --tertiary-fill: 118 118 128; --tertiary-fill-a: 0.24;
+    --quaternary-fill: 118 118 128; --quaternary-fill-a: 0.18;
+    --separator: 84 84 88; --separator-a: 0.6;
+    --opaque-separator: 56 56 58;
+    --bg: 0 0 0; --bg-secondary: 28 28 30; --bg-tertiary: 44 44 46;
+    --bg-grouped: 0 0 0; --bg-grouped-secondary: 28 28 30; --bg-elevated: 44 44 46;
+    --canvas-desk: 28 28 30; --canvas-paper: 242 242 247; --ink: 28 28 30;
+    --on-tint-green: 48 219 91; --on-tint-red: 255 105 97; --on-tint-orange: 255 179 64; --on-tint-blue: 64 156 255;
+    --on-tint-gray: 210 210 215;
+    --shadow-k: 0.6;
+    --shadow-ring: 0 0 0 0.5px rgb(var(--separator) / var(--separator-a));
+  }
+}
+
+/* Accent choices (设置 › 通用 › 强调色) */
+:root[data-accent='blue'] { --accent: var(--blue); }
+:root[data-accent='purple'] { --accent: var(--purple); }
+:root[data-accent='pink'] { --accent: var(--pink); }
+:root[data-accent='orange'] { --accent: var(--orange); }
+:root[data-accent='green'] { --accent: var(--green); }
+:root[data-accent='indigo'] { --accent: var(--indigo); }
+:root[data-accent='teal'] { --accent: var(--teal); }
+
+/* Accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-scale: 1;
+    --motion-shift: 0px;
+    --motion-sheet: 0%;
+    --press-scale: 1;
+    --dur-base: 120ms;
+    --dur-slow: 120ms;
+    --dur-sheet: 120ms;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --mat-alpha-sidebar: 1; --mat-alpha-toolbar: 1; --mat-alpha-thick: 1; --mat-alpha-thin: 1;
+    --blur-sidebar: none; --blur-toolbar: none;
+  }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root { --mat-alpha-sidebar: 1; --mat-alpha-toolbar: 1; --mat-alpha-thick: 1; --mat-alpha-thin: 1; }
+}
+@media (prefers-contrast: more) {
+  :root { --separator-a: 0.6; }
+}
+
+/* ---------- Tailwind theme mapping ---------- */
+@custom-variant dark {
+  &:where([data-theme='dark'], [data-theme='dark'] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme='light']), :root:not([data-theme='light']) *) {
+      @slot;
+    }
+  }
+}
+
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans CJK SC', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, 'JetBrains Mono', 'Noto Sans Mono CJK SC', monospace;
+
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-blue: rgb(var(--blue));
+  --color-red: rgb(var(--red));
+  --color-green: rgb(var(--green));
+  --color-orange: rgb(var(--orange));
+  --color-yellow: rgb(var(--yellow));
+  --color-teal: rgb(var(--teal));
+  --color-indigo: rgb(var(--indigo));
+  --color-purple: rgb(var(--purple));
+  --color-pink: rgb(var(--pink));
+  --color-gray: rgb(var(--gray));
+  --color-gray2: rgb(var(--gray2));
+  --color-gray3: rgb(var(--gray3));
+  --color-gray4: rgb(var(--gray4));
+  --color-gray5: rgb(var(--gray5));
+  --color-gray6: rgb(var(--gray6));
+  --color-accent: rgb(var(--accent));
+  --color-label: rgb(var(--label));
+  --color-secondary-label: rgb(var(--secondary-label) / var(--secondary-label-a));
+  --color-tertiary-label: rgb(var(--tertiary-label) / var(--tertiary-label-a));
+  --color-quaternary-label: rgb(var(--quaternary-label) / var(--quaternary-label-a));
+  --color-fill: rgb(var(--fill) / var(--fill-a));
+  --color-secondary-fill: rgb(var(--secondary-fill) / var(--secondary-fill-a));
+  --color-tertiary-fill: rgb(var(--tertiary-fill) / var(--tertiary-fill-a));
+  --color-quaternary-fill: rgb(var(--quaternary-fill) / var(--quaternary-fill-a));
+  --color-separator: rgb(var(--separator) / var(--separator-a));
+  --color-opaque-separator: rgb(var(--opaque-separator));
+  --color-bg: rgb(var(--bg));
+  --color-bg-secondary: rgb(var(--bg-secondary));
+  --color-bg-tertiary: rgb(var(--bg-tertiary));
+  --color-bg-grouped: rgb(var(--bg-grouped));
+  --color-bg-grouped-secondary: rgb(var(--bg-grouped-secondary));
+  --color-bg-elevated: rgb(var(--bg-elevated));
+  --color-canvas-desk: rgb(var(--canvas-desk));
+  --color-canvas-paper: rgb(var(--canvas-paper));
+  --color-ink: rgb(var(--ink));
+  --color-guide: rgb(var(--guide));
+  --color-axis-x: rgb(var(--axis-x));
+  --color-axis-y: rgb(var(--axis-y));
+  --color-axis-origin: rgb(var(--axis-origin));
+  --color-travel: rgb(var(--travel));
+  --color-overridden: rgb(var(--overridden));
+  --color-on-tint-green: rgb(var(--on-tint-green));
+  --color-on-tint-red: rgb(var(--on-tint-red));
+  --color-on-tint-orange: rgb(var(--on-tint-orange));
+  --color-on-tint-blue: rgb(var(--on-tint-blue));
+  --color-on-tint-gray: rgb(var(--on-tint-gray));
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+  --radius-2xl: 20px;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / calc(0.06 * var(--shadow-k))), var(--shadow-ring);
+  --shadow-md: 0 4px 12px rgb(0 0 0 / calc(0.08 * var(--shadow-k))), var(--shadow-ring);
+  --shadow-lg: 0 12px 40px rgb(0 0 0 / calc(0.16 * var(--shadow-k))), var(--shadow-ring);
+  --shadow-paper: 0 1px 3px rgb(0 0 0 / 0.12);
+
+  --text-large-title: var(--fs-large-title);
+  --text-large-title--line-height: var(--lh-large-title);
+  --text-large-title--font-weight: 700;
+  --text-large-title--letter-spacing: -0.02em;
+  --text-title1: var(--fs-title1);
+  --text-title1--line-height: var(--lh-title1);
+  --text-title1--font-weight: 700;
+  --text-title2: var(--fs-title2);
+  --text-title2--line-height: var(--lh-title2);
+  --text-title2--font-weight: 600;
+  --text-title3: var(--fs-title3);
+  --text-title3--line-height: var(--lh-title3);
+  --text-title3--font-weight: 600;
+  --text-headline: var(--fs-headline);
+  --text-headline--line-height: var(--lh-headline);
+  --text-headline--font-weight: 600;
+  --text-body: var(--fs-body);
+  --text-body--line-height: var(--lh-body);
+  --text-callout: var(--fs-callout);
+  --text-callout--line-height: var(--lh-callout);
+  --text-subheadline: var(--fs-subheadline);
+  --text-subheadline--line-height: var(--lh-subheadline);
+  --text-footnote: var(--fs-footnote);
+  --text-footnote--line-height: var(--lh-footnote);
+  --text-caption: var(--fs-caption);
+  --text-caption--line-height: var(--lh-caption);
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --animate-fade-in: fade-in var(--dur-fast) var(--ease-out) both;
+  --animate-fade-out: fade-out var(--dur-fast) var(--ease-in) both;
+  --animate-pop-in: pop-in var(--dur-fast) var(--ease-out) both;
+  --animate-pop-out: pop-out var(--dur-instant) var(--ease-in) both;
+  --animate-sheet-in-bottom: sheet-in-bottom var(--dur-sheet) var(--ease-spring) both;
+  --animate-sheet-out-bottom: sheet-out-bottom var(--dur-base) var(--ease-in) both;
+  --animate-sheet-in-right: sheet-in-right var(--dur-sheet) var(--ease-spring) both;
+  --animate-sheet-out-right: sheet-out-right var(--dur-base) var(--ease-in) both;
+  --animate-sheet-in-left: sheet-in-left var(--dur-slow) var(--ease-spring) both;
+  --animate-sheet-out-left: sheet-out-left var(--dur-base) var(--ease-in) both;
+  --animate-toast-in: toast-in var(--dur-base) var(--ease-spring) both;
+  --animate-toast-out: fade-out var(--dur-fast) var(--ease-in) both;
+  --animate-shimmer: shimmer 1.4s linear infinite;
+  --animate-shake: shake 320ms var(--ease-standard);
+
+  @keyframes fade-in { from { opacity: 0; } }
+  @keyframes fade-out { to { opacity: 0; } }
+  @keyframes pop-in { from { opacity: 0; transform: scale(var(--motion-scale)); } }
+  @keyframes pop-out { to { opacity: 0; transform: scale(var(--motion-scale)); } }
+  @keyframes sheet-in-bottom { from { transform: translateY(var(--motion-sheet)); opacity: 0.4; } }
+  @keyframes sheet-out-bottom { to { transform: translateY(var(--motion-sheet)); opacity: 0; } }
+  @keyframes sheet-in-right { from { transform: translateX(var(--motion-sheet)); } }
+  @keyframes sheet-out-right { to { transform: translateX(var(--motion-sheet)); } }
+  @keyframes sheet-in-left { from { transform: translateX(calc(var(--motion-sheet) * -1)); } }
+  @keyframes sheet-out-left { to { transform: translateX(calc(var(--motion-sheet) * -1)); } }
+  @keyframes toast-in { from { opacity: 0; transform: translateY(calc(var(--motion-shift) * -1)) scale(var(--motion-scale)); } }
+  @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+  @keyframes shake {
+    20%, 60% { transform: translateX(calc(var(--motion-shift) * -0.75)); }
+    40%, 80% { transform: translateX(calc(var(--motion-shift) * 0.75)); }
+  }
+}
+
+/* ---------- Materials ---------- */
+@utility mat-sidebar {
+  background-color: rgb(var(--bg-secondary) / var(--mat-alpha-sidebar));
+  -webkit-backdrop-filter: var(--blur-sidebar);
+  backdrop-filter: var(--blur-sidebar);
+}
+@utility mat-toolbar {
+  background-color: rgb(var(--bg) / var(--mat-alpha-toolbar));
+  -webkit-backdrop-filter: var(--blur-toolbar);
+  backdrop-filter: var(--blur-toolbar);
+}
+@utility mat-thick {
+  background-color: rgb(var(--bg-elevated) / var(--mat-alpha-thick));
+  -webkit-backdrop-filter: var(--blur-toolbar);
+  backdrop-filter: var(--blur-toolbar);
+}
+@utility mat-thin {
+  background-color: rgb(var(--bg-elevated) / var(--mat-alpha-thin));
+  -webkit-backdrop-filter: var(--blur-toolbar);
+  backdrop-filter: var(--blur-toolbar);
+}
+@utility mat-hud {
+  background-color: rgb(30 30 30 / 0.8);
+  -webkit-backdrop-filter: var(--blur-toolbar);
+  backdrop-filter: var(--blur-toolbar);
+  color: #fff;
+}
+@utility hairline-b { box-shadow: inset 0 -0.5px 0 rgb(var(--separator) / var(--separator-a)); }
+@utility hairline-t { box-shadow: inset 0 0.5px 0 rgb(var(--separator) / var(--separator-a)); }
+@utility hairline-r { box-shadow: inset -0.5px 0 0 rgb(var(--separator) / var(--separator-a)); }
+@utility hairline-l { box-shadow: inset 0.5px 0 0 rgb(var(--separator) / var(--separator-a)); }
+@utility press {
+  transition: transform var(--dur-instant) var(--ease-out);
+  &:active:not(:disabled):not([aria-disabled='true']) { transform: scale(var(--press-scale)); }
+}
+@utility focus-ring {
+  &:focus-visible {
+    outline: 3px solid rgb(var(--accent) / 0.5);
+    outline-offset: 2px;
+  }
+}
+@utility pt-safe { padding-top: env(safe-area-inset-top); }
+@utility pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+@utility pl-safe { padding-left: env(safe-area-inset-left); }
+@utility pr-safe { padding-right: env(safe-area-inset-right); }
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation; /* no double-tap zoom */
+  }
+  html, body, #root { height: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    color: rgb(var(--label));
+    background: rgb(var(--bg-grouped));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overscroll-behavior: none;
+  }
+  *, ::before, ::after { border-color: rgb(var(--separator) / var(--separator-a)); }
+  :focus-visible {
+    outline: 3px solid rgb(var(--accent) / 0.5);
+    outline-offset: 2px;
+  }
+  ::selection { background: rgb(var(--accent) / 0.25); }
+  button, [role='button'] { cursor: default; }
+  a { color: rgb(var(--accent)); text-decoration: none; }
+  .tabular, time, kbd { font-variant-numeric: tabular-nums; }
+}
+
+/* Elevated surfaces (sheets, dialogs) in dark mode: iOS uses #1c1c1e for the surface and #2c2c2e
+   for grouped cells on it (otherwise #1c1c1e cards sit on a #2c2c2e sheet with too little contrast). */
+:root[data-theme='dark'] .surface-elevated {
+  --color-bg-elevated: rgb(28 28 30);
+  --color-bg-grouped: rgb(28 28 30);
+  --color-bg-grouped-secondary: rgb(44 44 46);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .surface-elevated {
+    --color-bg-elevated: rgb(28 28 30);
+    --color-bg-grouped: rgb(28 28 30);
+    --color-bg-grouped-secondary: rgb(44 44 46);
+  }
+}

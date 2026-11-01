@@ -1,0 +1,9 @@
+{
+  "name": "penplot-webui-openapi-tools",
+  "private": true,
+  "description": "Isolated toolchain for `npm run gen:api`: openapi-typescript needs the TypeScript 5 compiler API, while the app builds with the native TypeScript 7 (which has no JS API).",
+  "devDependencies": {
+    "openapi-typescript": "^7.13.0",
+    "typescript": "~5.9.3"
+  }
+}

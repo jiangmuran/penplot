@@ -1,0 +1,494 @@
+{
+  "version": 1,
+  "papers": [
+    {
+      "id": "a4-inset",
+      "name": "A4 小一圈 200×287",
+      "category": "信纸",
+      "width_mm": 200,
+      "height_mm": 287,
+      "margins": {
+        "l": 15,
+        "r": 15,
+        "t": 25,
+        "b": 20
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 24,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      },
+      "note": "A4 纸四周各留约 5 mm，避免笔尖划出纸边；放纸时把原点对在 A4 左上角向内 5 mm 处"
+    },
+    {
+      "id": "a5",
+      "name": "A5 148×210",
+      "category": "信纸",
+      "width_mm": 148,
+      "height_mm": 210,
+      "margins": {
+        "l": 15,
+        "r": 15,
+        "t": 18,
+        "b": 18
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 16,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "a5-landscape",
+      "name": "A5 横向 210×148",
+      "category": "信纸",
+      "width_mm": 148,
+      "height_mm": 210,
+      "margins": {
+        "l": 15,
+        "r": 15,
+        "t": 15,
+        "b": 15
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 10,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "a6",
+      "name": "A6 105×148",
+      "category": "卡片",
+      "width_mm": 105,
+      "height_mm": 148,
+      "margins": {
+        "l": 10,
+        "r": 10,
+        "t": 12,
+        "b": 12
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 12,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "b5",
+      "name": "B5 176×250",
+      "category": "信纸",
+      "width_mm": 176,
+      "height_mm": 250,
+      "margins": {
+        "l": 20,
+        "r": 20,
+        "t": 22,
+        "b": 22
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 20,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "letter-us",
+      "name": "Letter 216×279",
+      "category": "信纸",
+      "width_mm": 216,
+      "height_mm": 279,
+      "margins": {
+        "l": 25,
+        "r": 25,
+        "t": 25,
+        "b": 25
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 22,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "postcard-148x100",
+      "name": "明信片 148×100",
+      "category": "卡片",
+      "width_mm": 100,
+      "height_mm": 148,
+      "margins": {
+        "l": 8,
+        "r": 8,
+        "t": 8,
+        "b": 8
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 8,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      },
+      "note": "横放；国际通用明信片尺寸"
+    },
+    {
+      "id": "postcard-cn-165x102",
+      "name": "明信片（中国邮政标准）165×102",
+      "category": "卡片",
+      "width_mm": 102,
+      "height_mm": 165,
+      "margins": {
+        "l": 8,
+        "r": 8,
+        "t": 8,
+        "b": 8
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 8,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "card-a5-fold",
+      "name": "贺卡 A5 对折（210×148）",
+      "category": "卡片",
+      "width_mm": 148,
+      "height_mm": 210,
+      "margins": {
+        "l": 10,
+        "r": 10,
+        "t": 10,
+        "b": 10
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 10,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      },
+      "note": "A5 横放，中线 x=105 对折；内页右半边写字"
+    },
+    {
+      "id": "card-a6-fold-out",
+      "name": "贺卡 A6 对折成品 105×148",
+      "category": "卡片",
+      "width_mm": 105,
+      "height_mm": 148,
+      "margins": {
+        "l": 10,
+        "r": 10,
+        "t": 12,
+        "b": 12
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 12,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "envelope-dl",
+      "name": "信封 DL 220×110",
+      "category": "信封",
+      "width_mm": 110,
+      "height_mm": 220,
+      "margins": {
+        "l": 10,
+        "r": 10,
+        "t": 10,
+        "b": 10
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 6,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "envelope-c5",
+      "name": "信封 C5 229×162",
+      "category": "信封",
+      "width_mm": 162,
+      "height_mm": 229,
+      "margins": {
+        "l": 15,
+        "r": 15,
+        "t": 15,
+        "b": 15
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 8,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "envelope-c6",
+      "name": "信封 C6 162×114",
+      "category": "信封",
+      "width_mm": 114,
+      "height_mm": 162,
+      "margins": {
+        "l": 10,
+        "r": 10,
+        "t": 10,
+        "b": 10
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 6,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "envelope-cn5",
+      "name": "中式 5 号信封 220×110",
+      "category": "信封",
+      "width_mm": 110,
+      "height_mm": 220,
+      "margins": {
+        "l": 10,
+        "r": 10,
+        "t": 10,
+        "b": 10
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 6,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      },
+      "note": "国内最常用的普通信封"
+    },
+    {
+      "id": "envelope-cn7",
+      "name": "中式 7 号信封 229×162",
+      "category": "信封",
+      "width_mm": 162,
+      "height_mm": 229,
+      "margins": {
+        "l": 15,
+        "r": 15,
+        "t": 15,
+        "b": 15
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 8,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      },
+      "note": "可平放 A4 对折两次的信纸"
+    },
+    {
+      "id": "envelope-cn3",
+      "name": "中式 3 号信封 176×125",
+      "category": "信封",
+      "width_mm": 125,
+      "height_mm": 176,
+      "margins": {
+        "l": 10,
+        "r": 10,
+        "t": 10,
+        "b": 10
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 6,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "sticky-76",
+      "name": "便签 76×76",
+      "category": "便签",
+      "width_mm": 76,
+      "height_mm": 76,
+      "margins": {
+        "l": 5,
+        "r": 5,
+        "t": 5,
+        "b": 5
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 8,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "sticky-76x127",
+      "name": "便签 76×127",
+      "category": "便签",
+      "width_mm": 76,
+      "height_mm": 127,
+      "margins": {
+        "l": 5,
+        "r": 5,
+        "t": 6,
+        "b": 6
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 12,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "place-card-100",
+      "name": "席位卡 100×100（对折）",
+      "category": "卡片",
+      "width_mm": 100,
+      "height_mm": 100,
+      "margins": {
+        "l": 5,
+        "r": 5,
+        "t": 5,
+        "b": 5
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 4,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      },
+      "note": "对折成 100×50 帐篷卡，折线在 y=50"
+    },
+    {
+      "id": "place-card-90x50",
+      "name": "席位卡成品 90×50",
+      "category": "卡片",
+      "width_mm": 90,
+      "height_mm": 50,
+      "margins": {
+        "l": 5,
+        "r": 5,
+        "t": 5,
+        "b": 5
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 2,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "business-card",
+      "name": "名片 90×54",
+      "category": "卡片",
+      "width_mm": 54,
+      "height_mm": 90,
+      "margins": {
+        "l": 5,
+        "r": 5,
+        "t": 5,
+        "b": 5
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 4,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "bookmark",
+      "name": "书签 50×150",
+      "category": "卡片",
+      "width_mm": 50,
+      "height_mm": 150,
+      "margins": {
+        "l": 6,
+        "r": 6,
+        "t": 10,
+        "b": 10
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 10,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    },
+    {
+      "id": "index-card",
+      "name": "索引卡 127×76",
+      "category": "卡片",
+      "width_mm": 76,
+      "height_mm": 127,
+      "margins": {
+        "l": 6,
+        "r": 6,
+        "t": 6,
+        "b": 6
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 7,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    }
+  ]
+}

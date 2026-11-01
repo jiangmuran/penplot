@@ -1,0 +1,127 @@
+{
+  "version": 1,
+  "name": "通知函",
+  "variables": [
+    {
+      "name": "name",
+      "default": "李先生",
+      "type": "text",
+      "label": "收信人"
+    },
+    {
+      "name": "from",
+      "default": "客户服务部",
+      "type": "text",
+      "label": "写信人"
+    },
+    {
+      "name": "date",
+      "default": "十月三十一日",
+      "type": "text",
+      "label": "日期"
+    }
+  ],
+  "paper": {
+    "paper_id": "a4-normal",
+    "spec": null
+  },
+  "print": {
+    "optimize": true
+  },
+  "pages": [
+    {
+      "id": "p1",
+      "paper": null,
+      "origin": null,
+      "elements": [
+        {
+          "id": "e1",
+          "type": "flow_text",
+          "transform": {
+            "x": 0,
+            "y": 0,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 0,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "尊敬的{{name}}：\n您好！感谢您一直以来对我们工作的支持。根据今年的安排，本季度的服务回访将在下个月上旬进行，届时工作人员会提前和您联系，确认具体的时间。\n如果您的联系方式或地址有变动，请在本月底前告诉我们，以便及时更新资料。手写的信比消息慢一些，但我们希望每一位客户都能收到一封认真写下的信。\n此致\n敬礼",
+            "font_id": "open-wenkai-stroke",
+            "font_mix": null,
+            "text_size": 1.0,
+            "char_space": 0.0,
+            "align": "L",
+            "paragraph": {
+              "spe_type": 1,
+              "spe_value": 8.0,
+              "left": 0,
+              "right": 0
+            },
+            "line_num": null,
+            "seed": 42,
+            "missing_glyph": "box",
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            }
+          },
+          "name": "正文"
+        },
+        {
+          "id": "e2",
+          "type": "text",
+          "transform": {
+            "x": 110,
+            "y": 190,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 1,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{from}}\n{{date}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 6,
+            "line_height": 1.6,
+            "char_space": 0.0,
+            "align": "R",
+            "box": {
+              "w": 67,
+              "h": 19.21
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "落款"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+{
+  "version": 1,
+  "name": "诗词横排",
+  "variables": [],
+  "paper": {
+    "paper_id": "a5-landscape",
+    "spec": {
+      "name": "A5 横向 210×148",
+      "width_mm": 148,
+      "height_mm": 210,
+      "margins": {
+        "l": 0,
+        "r": 0,
+        "t": 0,
+        "b": 0
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 20,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    }
+  },
+  "print": {
+    "optimize": true
+  },
+  "pages": [
+    {
+      "id": "p1",
+      "paper": null,
+      "origin": null,
+      "elements": [
+        {
+          "id": "e1",
+          "type": "text",
+          "transform": {
+            "x": 10,
+            "y": 12,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 0,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "水调歌头",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 11,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 190,
+              "h": 13.21
+            },
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "标题"
+        },
+        {
+          "id": "e2",
+          "type": "text",
+          "transform": {
+            "x": 10,
+            "y": 27,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 1,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "苏轼",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 6,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 190,
+              "h": 7.21
+            },
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "作者"
+        },
+        {
+          "id": "e3",
+          "type": "text",
+          "transform": {
+            "x": 18,
+            "y": 40,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 2,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "明月几时有？把酒问青天。\n不知天上宫阙，今夕是何年。\n我欲乘风归去，又恐琼楼玉宇，\n高处不胜寒。起舞弄清影，何似在人间。\n转朱阁，低绮户，照无眠。\n不应有恨，何事长向别时圆？\n人有悲欢离合，月有阴晴圆缺，此事古难全。\n但愿人长久，千里共婵娟。",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 6.2,
+            "line_height": 1.75,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 174,
+              "h": 86.81
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "正文"
+        }
+      ]
+    }
+  ]
+}

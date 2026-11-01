@@ -1,0 +1,536 @@
+{
+  "version": 1,
+  "name": "明信片",
+  "variables": [
+    {
+      "name": "name",
+      "default": "李华",
+      "type": "text",
+      "label": "收件人"
+    },
+    {
+      "name": "address",
+      "default": "北京市海淀区中关村大街1号",
+      "type": "text",
+      "label": "地址"
+    },
+    {
+      "name": "postcode",
+      "default": "100080",
+      "type": "text",
+      "label": "邮编"
+    },
+    {
+      "name": "message",
+      "default": "见字如面。这里的秋天很好，银杏都黄了，等你来。",
+      "type": "text",
+      "label": "留言"
+    }
+  ],
+  "paper": {
+    "paper_id": "postcard-148x100",
+    "spec": {
+      "name": "明信片 148×100",
+      "width_mm": 100,
+      "height_mm": 148,
+      "margins": {
+        "l": 0,
+        "r": 0,
+        "t": 0,
+        "b": 0
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 20,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    }
+  },
+  "print": {
+    "optimize": true
+  },
+  "pages": [
+    {
+      "id": "p1",
+      "paper": null,
+      "origin": null,
+      "elements": [
+        {
+          "id": "e1",
+          "type": "shape",
+          "transform": {
+            "x": 8.0,
+            "y": 7,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 0,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "rect",
+            "w": 6.2,
+            "h": 7.13,
+            "hatch": null
+          },
+          "name": "邮编框"
+        },
+        {
+          "id": "e2",
+          "type": "shape",
+          "transform": {
+            "x": 15.8,
+            "y": 7,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 1,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "rect",
+            "w": 6.2,
+            "h": 7.13,
+            "hatch": null
+          },
+          "name": "邮编框"
+        },
+        {
+          "id": "e3",
+          "type": "shape",
+          "transform": {
+            "x": 23.6,
+            "y": 7,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 2,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "rect",
+            "w": 6.2,
+            "h": 7.13,
+            "hatch": null
+          },
+          "name": "邮编框"
+        },
+        {
+          "id": "e4",
+          "type": "shape",
+          "transform": {
+            "x": 31.4,
+            "y": 7,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 3,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "rect",
+            "w": 6.2,
+            "h": 7.13,
+            "hatch": null
+          },
+          "name": "邮编框"
+        },
+        {
+          "id": "e5",
+          "type": "shape",
+          "transform": {
+            "x": 39.2,
+            "y": 7,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 4,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "rect",
+            "w": 6.2,
+            "h": 7.13,
+            "hatch": null
+          },
+          "name": "邮编框"
+        },
+        {
+          "id": "e6",
+          "type": "shape",
+          "transform": {
+            "x": 47.0,
+            "y": 7,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 5,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "rect",
+            "w": 6.2,
+            "h": 7.13,
+            "hatch": null
+          },
+          "name": "邮编框"
+        },
+        {
+          "id": "e7",
+          "type": "text",
+          "transform": {
+            "x": 9.6,
+            "y": 8.2,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 6,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{postcode}}",
+            "font_id": "penplot-sans",
+            "size_mm": 4.6,
+            "line_height": 1.0,
+            "char_space": 4.65,
+            "align": "L",
+            "box": null,
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "邮编"
+        },
+        {
+          "id": "e8",
+          "type": "shape",
+          "transform": {
+            "x": 118,
+            "y": 7,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 7,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "rect",
+            "w": 22,
+            "h": 26,
+            "hatch": null
+          },
+          "name": "邮票框"
+        },
+        {
+          "id": "e9",
+          "type": "text",
+          "transform": {
+            "x": 119,
+            "y": 17,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 8,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "贴邮票",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 3.2,
+            "line_height": 1.3,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 20,
+              "h": 4.17
+            },
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "邮票提示"
+        },
+        {
+          "id": "e10",
+          "type": "shape",
+          "transform": {
+            "x": 76,
+            "y": 38,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 9,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                56
+              ]
+            ],
+            "closed": false
+          },
+          "name": "分隔线"
+        },
+        {
+          "id": "e11",
+          "type": "text",
+          "transform": {
+            "x": 8,
+            "y": 40,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 10,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{message}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 4.5,
+            "line_height": 1.6,
+            "char_space": 0.0,
+            "align": "L",
+            "box": {
+              "w": 64,
+              "h": 50
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "留言"
+        },
+        {
+          "id": "e12",
+          "type": "shape",
+          "transform": {
+            "x": 82,
+            "y": 52,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 11,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                58,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "地址横线"
+        },
+        {
+          "id": "e13",
+          "type": "shape",
+          "transform": {
+            "x": 82,
+            "y": 64,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 12,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                58,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "地址横线"
+        },
+        {
+          "id": "e14",
+          "type": "shape",
+          "transform": {
+            "x": 82,
+            "y": 76,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 13,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                58,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "地址横线"
+        },
+        {
+          "id": "e15",
+          "type": "text",
+          "transform": {
+            "x": 83,
+            "y": 42.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 14,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{address}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 4.6,
+            "line_height": 2.2,
+            "char_space": 0.0,
+            "align": "L",
+            "box": {
+              "w": 56,
+              "h": 21
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "地址"
+        },
+        {
+          "id": "e16",
+          "type": "text",
+          "transform": {
+            "x": 83,
+            "y": 66.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 15,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{name}} 收",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 6.2,
+            "line_height": 1.3,
+            "char_space": 0.0,
+            "align": "L",
+            "box": {
+              "w": 56,
+              "h": 8.07
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "收件人"
+        }
+      ]
+    }
+  ]
+}

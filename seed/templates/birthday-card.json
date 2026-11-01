@@ -1,0 +1,461 @@
+{
+  "version": 1,
+  "name": "生日贺卡",
+  "variables": [
+    {
+      "name": "name",
+      "default": "小明",
+      "type": "text",
+      "label": "寿星"
+    },
+    {
+      "name": "from",
+      "default": "全体同事",
+      "type": "text",
+      "label": "落款"
+    },
+    {
+      "name": "date",
+      "default": "十月三十一日",
+      "type": "text",
+      "label": "日期"
+    }
+  ],
+  "paper": {
+    "paper_id": "card-a5-fold",
+    "spec": {
+      "name": "贺卡 A5 对折（210×148）",
+      "width_mm": 148,
+      "height_mm": 210,
+      "margins": {
+        "l": 0,
+        "r": 0,
+        "t": 0,
+        "b": 0
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 20,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    }
+  },
+  "print": {
+    "optimize": true
+  },
+  "pages": [
+    {
+      "id": "p1",
+      "paper": null,
+      "origin": null,
+      "elements": [
+        {
+          "id": "e1",
+          "type": "text",
+          "transform": {
+            "x": 115,
+            "y": 16,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 0,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "生日快乐",
+            "font_id": "open-hei-stroke",
+            "size_mm": 15,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 85,
+              "h": 18.01
+            },
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "标题"
+        },
+        {
+          "id": "e2",
+          "type": "shape",
+          "transform": {
+            "x": 135.5,
+            "y": 70,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 1,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                44,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "盘子"
+        },
+        {
+          "id": "e3",
+          "type": "shape",
+          "transform": {
+            "x": 139.5,
+            "y": 56,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 2,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "rect",
+            "w": 36,
+            "h": 14,
+            "hatch": null
+          },
+          "name": "下层"
+        },
+        {
+          "id": "e4",
+          "type": "shape",
+          "transform": {
+            "x": 145.5,
+            "y": 46,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 3,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "rect",
+            "w": 24,
+            "h": 10,
+            "hatch": null
+          },
+          "name": "上层"
+        },
+        {
+          "id": "e5",
+          "type": "shape",
+          "transform": {
+            "x": 139.5,
+            "y": 62,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 4,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                6,
+                2
+              ],
+              [
+                12,
+                0
+              ],
+              [
+                18,
+                2
+              ],
+              [
+                24,
+                0
+              ],
+              [
+                30,
+                2
+              ],
+              [
+                36,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "奶油"
+        },
+        {
+          "id": "e6",
+          "type": "shape",
+          "transform": {
+            "x": 150.5,
+            "y": 40,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 5,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                6
+              ]
+            ],
+            "closed": false
+          },
+          "name": "蜡烛"
+        },
+        {
+          "id": "e7",
+          "type": "shape",
+          "transform": {
+            "x": 149.3,
+            "y": 36,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 6,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "ellipse",
+            "w": 2.4,
+            "h": 3.6
+          },
+          "name": "火苗"
+        },
+        {
+          "id": "e8",
+          "type": "shape",
+          "transform": {
+            "x": 157.5,
+            "y": 40,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 7,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                6
+              ]
+            ],
+            "closed": false
+          },
+          "name": "蜡烛"
+        },
+        {
+          "id": "e9",
+          "type": "shape",
+          "transform": {
+            "x": 156.3,
+            "y": 36,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 8,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "ellipse",
+            "w": 2.4,
+            "h": 3.6
+          },
+          "name": "火苗"
+        },
+        {
+          "id": "e10",
+          "type": "shape",
+          "transform": {
+            "x": 164.5,
+            "y": 40,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 9,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                6
+              ]
+            ],
+            "closed": false
+          },
+          "name": "蜡烛"
+        },
+        {
+          "id": "e11",
+          "type": "shape",
+          "transform": {
+            "x": 163.3,
+            "y": 36,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 10,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "ellipse",
+            "w": 2.4,
+            "h": 3.6
+          },
+          "name": "火苗"
+        },
+        {
+          "id": "e12",
+          "type": "text",
+          "transform": {
+            "x": 117,
+            "y": 80,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 11,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{name}}：\n愿你新的一岁平安喜乐，\n所求皆如愿，所行皆坦途。",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 6,
+            "line_height": 1.55,
+            "char_space": 0.0,
+            "align": "L",
+            "box": {
+              "w": 85,
+              "h": 27.91
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "祝福语"
+        },
+        {
+          "id": "e13",
+          "type": "text",
+          "transform": {
+            "x": 117,
+            "y": 120,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 12,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{from}}\n{{date}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 5.5,
+            "line_height": 1.5,
+            "char_space": 0.0,
+            "align": "R",
+            "box": {
+              "w": 81,
+              "h": 16.51
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "落款"
+        }
+      ]
+    }
+  ]
+}

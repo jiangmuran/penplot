@@ -1,0 +1,123 @@
+{
+  "version": 1,
+  "name": "书法字帖",
+  "variables": [
+    {
+      "name": "title",
+      "default": "书法练习",
+      "type": "text",
+      "label": "标题"
+    },
+    {
+      "name": "chars",
+      "default": "永和九年春之初会于山阴兰亭",
+      "type": "text",
+      "label": "示范字（最多 13 个）"
+    }
+  ],
+  "paper": {
+    "paper_id": "a4-normal",
+    "spec": null
+  },
+  "print": {
+    "optimize": true
+  },
+  "pages": [
+    {
+      "id": "p1",
+      "paper": null,
+      "origin": null,
+      "elements": [
+        {
+          "id": "e1",
+          "type": "text",
+          "transform": {
+            "x": 19.5,
+            "y": 12,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 0,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{title}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 9,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 170.0,
+              "h": 10.81
+            },
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "标题"
+        },
+        {
+          "id": "e2",
+          "type": "shape",
+          "transform": {
+            "x": 19.5,
+            "y": 30,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 1,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "grid",
+            "w": 170.0,
+            "h": 221.0,
+            "rows": 13,
+            "cols": 10,
+            "grid_style": "tian"
+          },
+          "name": "田字格"
+        },
+        {
+          "id": "e3",
+          "type": "text",
+          "transform": {
+            "x": 22.8,
+            "y": 28.65,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 2,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{chars}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 15.0,
+            "line_height": 1.1333333333333333,
+            "char_space": 0.0,
+            "align": "L",
+            "box": {
+              "w": 17.0,
+              "h": 221.0
+            },
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "示范字"
+        }
+      ]
+    }
+  ]
+}

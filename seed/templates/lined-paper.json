@@ -1,0 +1,822 @@
+{
+  "version": 1,
+  "name": "横线信纸",
+  "variables": [
+    {
+      "name": "title",
+      "default": "读书笔记",
+      "type": "text",
+      "label": "页眉"
+    }
+  ],
+  "paper": {
+    "paper_id": "a4-inset",
+    "spec": {
+      "name": "A4 小一圈 200×287",
+      "width_mm": 200,
+      "height_mm": 287,
+      "margins": {
+        "l": 15,
+        "r": 15,
+        "t": 25,
+        "b": 20
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 20,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    }
+  },
+  "print": {
+    "optimize": true
+  },
+  "pages": [
+    {
+      "id": "p1",
+      "paper": null,
+      "origin": null,
+      "elements": [
+        {
+          "id": "e1",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 30.0,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 0,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e2",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 40.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 1,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e3",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 51.0,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 2,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e4",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 61.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 3,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e5",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 72.0,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 4,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e6",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 82.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 5,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e7",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 93.0,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 6,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e8",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 103.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 7,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e9",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 114.0,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 8,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e10",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 124.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 9,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e11",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 135.0,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 10,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e12",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 145.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 11,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e13",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 156.0,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 12,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e14",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 166.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 13,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e15",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 177.0,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 14,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e16",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 187.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 15,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e17",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 198.0,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 16,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e18",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 208.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 17,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e19",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 219.0,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 18,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e20",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 229.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 19,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e21",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 240.0,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 20,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e22",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 250.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 21,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e23",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 261.0,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 22,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e24",
+          "type": "shape",
+          "transform": {
+            "x": 15,
+            "y": 271.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 23,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "横线"
+        },
+        {
+          "id": "e25",
+          "type": "text",
+          "transform": {
+            "x": 15,
+            "y": 14,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 24,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{title}}",
+            "font_id": "open-hei-stroke",
+            "size_mm": 6,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 170,
+              "h": 7.21
+            },
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "页眉"
+        }
+      ]
+    }
+  ]
+}

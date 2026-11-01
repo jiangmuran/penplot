@@ -1,0 +1,72 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "penplot"
+dynamic = ["version"]   # single source: penplot/__init__.py __version__
+description = "Pen plotter / laser engraver toolkit: stroke fonts, text layout, image-to-path, G-code, serial machine control"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+machine = ["pyserial>=3.5"]
+image = ["numpy>=1.20", "pillow>=8.0"]
+ttf = ["numpy>=1.20", "pillow>=8.0", "fonttools>=4.0", "scikit-image>=0.19"]
+preview = ["matplotlib>=3.5"]
+web = ["fastapi>=0.115,<1", "uvicorn>=0.35", "websockets>=12", "python-multipart>=0.0.9", "pydantic>=2",
+       "pyserial>=3.5"]
+vector = ["svgelements>=1.9", "ezdxf>=1.1"]
+office = ["openpyxl>=3.1"]
+# reference backgrounds: rasterize a PDF page (Apache-2.0/BSD-3; aarch64 cp312 wheels)
+pdf = ["pypdfium2>=4.30"]
+all = ["penplot[machine,image,ttf,preview,web,vector,office,pdf]"]
+dev = ["pytest>=7", "httpx>=0.27", "ruff>=0.6"]
+
+[project.scripts]
+penplot = "penplot.cli:main"
+penplot-web = "penplot.web.__main__:main"
+
+[tool.setuptools.dynamic]
+version = {attr = "penplot.__version__"}
+
+[tool.setuptools.packages.find]
+include = ["penplot*"]
+
+[tool.setuptools.package-data]
+"penplot.web" = ["migrations/*.sql", "static/**/*"]
+
+# Seed profile + built-in papers/templates/samples live at the repo root
+# (configs/, seed/). A wheel installs them under <prefix>/share/penplot, where
+# penplot.web.config looks when the repo copy is absent.
+[tool.setuptools.data-files]
+"share/penplot/configs" = ["configs/grbl-zpen.json"]
+"share/penplot/seed" = ["seed/papers.json"]
+"share/penplot/seed/templates" = ["seed/templates/*.json"]
+"share/penplot/seed/templates/previews" = ["seed/templates/previews/*"]
+"share/penplot/seed/samples" = ["seed/samples/*.csv"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# tests/scripts/ holds the original standalone check scripts; they are run
+# as subprocesses by tests/test_legacy_scripts.py, not collected directly
+addopts = "--ignore=tests/scripts"
+filterwarnings = ["ignore:Using `httpx` with `starlette.testclient`"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+# tests/scripts: legacy standalone check scripts (run as subprocesses)
+extend-exclude = ["tests/scripts", "penplot/web/static", "webui", "e2e", "seed"]
+
+[tool.ruff.lint]
+# real-bug subset only (pyflakes + bugbear); style is not enforced
+select = ["F", "B", "E9"]
+ignore = [
+    "B007",  # unused loop variable: harmless, often documents tuple shape
+    "B008",  # FastAPI File()/Depends() in defaults is the framework idiom
+    "B023",  # loop-var closures here are all called synchronously inside the loop
+    "B904",  # raise-from inside except: ApiError chaining is intentional noise
+    "B905",  # zip(strict=) needs py3.10+ semantics review; not a bug source here
+]

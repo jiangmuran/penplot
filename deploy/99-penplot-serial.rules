@@ -1,0 +1,4 @@
+# CH340 (GRBL plotter): dialout access, stable symlink, keep DTR asserted across
+# close/reopen (-hupcl, unverified: avoids the Arduino auto-reset on service restart),
+# and keep ModemManager away from the port.
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", GROUP="dialout", MODE="0660", SYMLINK+="penplot-grbl", ENV{ID_MM_DEVICE_IGNORE}="1", RUN+="/bin/stty -F /dev/%k -hupcl"

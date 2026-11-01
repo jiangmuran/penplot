@@ -1,0 +1,79 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+
+# ---------------------------------------------------------------- fonts
+# Allowlist only. Vendor .gfont fonts and .psf files converted from proprietary
+# fonts (SimSun, Microsoft YaHei, ...) are NOT redistributable and must never be
+# committed: everything under fonts/ is ignored unless listed below.
+# To add a font to the release it must carry an open licence (OFL etc.):
+# add it here and document it in fonts/README.md + fonts/LICENSES/.
+/fonts/*
+!/fonts/README.md
+!/fonts/penplot-sans.psf
+!/fonts/open-wenkai-stroke.psf
+!/fonts/open-hei-stroke.psf
+!/fonts/open-caveat-stroke.psf
+!/fonts/LICENSES/
+!/fonts/previews/
+!/fonts/tools/
+# belt and braces: never these, wherever they appear
+*.gfont
+*.ttc
+*.TTC
+msyh*.psf
+simsun*.psf
+fonts/**/*.ttf
+fonts/**/*.otf
+gcodeFonts/
+
+# downloads / generated output
+download/
+*.gcode
+*.nc
+out/
+out*.png
+# plot output SVGs are ignored; SVG assets in these places are tracked
+*.svg
+!docs/**/*.svg
+!webui/public/**/*.svg
+!webui/src/**/*.svg
+!fonts/previews/*.svg
+
+# built SPA, copied in by deploy/deploy.sh
+penplot/web/static/
+# e2e private build + reports
+e2e/.webui-dist/
+e2e/node_modules/
+e2e/test-results/
+e2e/playwright-report/
+e2e/.run/
+e2e/.auth/
+
+# local state, secrets
+*.db
+*.db-wal
+*.db-shm
+.env
+*.env
+!deploy/*.env.example
+setup-code
+*.pem
+*.key
+
+# crash dumps
+core
+core.[0-9]*
+
+# editors / OS
+.idea/
+.vscode/
+.DS_Store

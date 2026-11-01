@@ -1,0 +1,200 @@
+{
+  "version": 1,
+  "name": "席位卡",
+  "variables": [
+    {
+      "name": "name",
+      "default": "王小明",
+      "type": "text",
+      "label": "宾客"
+    },
+    {
+      "name": "table",
+      "default": "第 1 桌",
+      "type": "text",
+      "label": "桌号"
+    }
+  ],
+  "paper": {
+    "paper_id": "place-card-100",
+    "spec": {
+      "name": "席位卡 100×100（对折）",
+      "width_mm": 100,
+      "height_mm": 100,
+      "margins": {
+        "l": 0,
+        "r": 0,
+        "t": 0,
+        "b": 0
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 20,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    }
+  },
+  "print": {
+    "optimize": true
+  },
+  "pages": [
+    {
+      "id": "p1",
+      "paper": null,
+      "origin": null,
+      "elements": [
+        {
+          "id": "e1",
+          "type": "text",
+          "transform": {
+            "x": 5,
+            "y": 60,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 0,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{name}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 13,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 90,
+              "h": 15.61
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "姓名"
+        },
+        {
+          "id": "e2",
+          "type": "text",
+          "transform": {
+            "x": 5,
+            "y": 82,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 1,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{table}}",
+            "font_id": "open-hei-stroke",
+            "size_mm": 5,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 90,
+              "h": 6.01
+            },
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "桌号"
+        },
+        {
+          "id": "e3",
+          "type": "text",
+          "transform": {
+            "x": 95,
+            "y": 40,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 180
+          },
+          "z": 2,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{name}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 13,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 90,
+              "h": 15.61
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "姓名（背面）"
+        },
+        {
+          "id": "e4",
+          "type": "text",
+          "transform": {
+            "x": 95,
+            "y": 18,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 180
+          },
+          "z": 3,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{table}}",
+            "font_id": "open-hei-stroke",
+            "size_mm": 5,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 90,
+              "h": 6.01
+            },
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "桌号（背面）"
+        }
+      ]
+    }
+  ]
+}

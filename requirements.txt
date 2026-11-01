@@ -1,0 +1,5 @@
+numpy>=1.20         # 图片转路径（edge/skeleton/dots）
+pyserial>=3.5       # 机器控制（print/tool）
+pillow>=8.0         # 图片读取（或装 opencv-python 更快）
+scikit-image>=0.19    # 可选：更干净的骨架细化（Lee 94）
+matplotlib>=3.5     # 可选：PNG 预览（SVG 无需依赖）

@@ -1,0 +1,59 @@
+[Unit]
+Description=penplot web workbench
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=notify
+NotifyAccess=main
+User=penplot
+SupplementaryGroups=dialout systemd-journal
+EnvironmentFile=-/etc/penplot/web.env
+Environment=PYTHONPATH=/opt/penplot/current PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+# large multipart spools + forkserver socket: ProtectSystem=strict makes /tmp read-only otherwise
+Environment=TMPDIR=/var/lib/penplot/tmp
+# numpy/OpenBLAS thread buffers do not fit under the task children's RLIMIT_AS
+Environment=OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1
+WorkingDirectory=/opt/penplot/current
+ExecStart=/opt/penplot/venv/bin/python -m penplot.web serve
+Restart=always
+RestartSec=3
+WatchdogSec=60
+TimeoutStopSec=45
+KillMode=mixed
+Nice=-5
+MemoryHigh=900M
+MemoryMax=1200M
+OOMScoreAdjust=-300
+StateDirectory=penplot
+RuntimeDirectory=penplot
+RuntimeDirectoryPreserve=no
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+ReadWritePaths=/var/lib/penplot /run/lock
+DevicePolicy=closed
+DeviceAllow=char-ttyUSB rw
+DeviceAllow=char-ttyACM rw
+DeviceAllow=/dev/ptmx rw
+DeviceAllow=char-pts rw
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+RestrictNamespaces=yes
+LockPersonality=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+CapabilityBoundingSet=
+UMask=0027
+TasksMax=256
+LogRateLimitIntervalSec=30s
+LogRateLimitBurst=2000
+SyslogIdentifier=penplot-web
+
+[Install]
+WantedBy=multi-user.target

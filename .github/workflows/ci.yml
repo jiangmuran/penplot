@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python:
+    name: Python tests (py${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.12"]
+    env:
+      # numpy/scikit-image spawn one BLAS thread per core otherwise; the
+      # task-worker tests fork and oversubscribe the runner
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MPLBACKEND: Agg
+      PYTHONUNBUFFERED: "1"
+      # The repository ships only the open fonts in fonts/ (no vendor .gfont,
+      # no fonts converted from Windows TTFs); tests that need those must skip.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e '.[all,dev]'
+      - name: CLI smoke test
+        run: |
+          penplot --version
+          penplot font list -d fonts
+          penplot write "你好，世界 Hello" -f open-wenkai-stroke -d fonts -o /tmp/smoke.gcode --seed 1
+          test -s /tmp/smoke.gcode
+      - name: pytest
+        run: python -m pytest -q -rs --durations=15
+
+  webui:
+    name: Web UI build (node 22)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: webui
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: webui/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build   # tsc -b && vite build
+
+  hygiene:
+    name: Release hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: No non-redistributable fonts or core dumps are tracked
+        run: |
+          bad=$(git ls-files | grep -E '\.(gfont|ttc|ttf|otf)$|(^|/)(msyh|simsun)[^/]*\.psf$|(^|/)core(\.[0-9]+)?$' || true)
+          if [ -n "$bad" ]; then echo "::error::non-redistributable or junk files tracked:"; echo "$bad"; exit 1; fi
+          extra=$(git ls-files fonts | grep -v -E '^fonts/(README\.md|penplot-sans\.psf|open-[a-z-]+\.psf|LICENSES/.*|previews/.*|tools/.*)$' || true)
+          if [ -n "$extra" ]; then echo "::error::fonts/ file not in the allowlist (document its licence in fonts/README.md):"; echo "$extra"; exit 1; fi
+      - name: No private addresses or local paths
+        run: |
+          hits=$(git grep -nE '192\.168\.8\.192|/home/jmr|jmrhomecloud' -- . ':!.github/workflows/ci.yml' || true)
+          if [ -n "$hits" ]; then echo "::error::private data found:"; echo "$hits"; exit 1; fi

@@ -1,0 +1,310 @@
+{
+  "version": 1,
+  "name": "诗词竖排",
+  "variables": [
+    {
+      "name": "note",
+      "default": "甲辰秋 书",
+      "type": "text",
+      "label": "题记"
+    }
+  ],
+  "paper": {
+    "paper_id": "a5",
+    "spec": {
+      "name": "A5 148×210",
+      "width_mm": 148,
+      "height_mm": 210,
+      "margins": {
+        "l": 0,
+        "r": 0,
+        "t": 0,
+        "b": 0
+      },
+      "orientation": "portrait",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 20,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    }
+  },
+  "print": {
+    "optimize": true
+  },
+  "pages": [
+    {
+      "id": "p1",
+      "paper": null,
+      "origin": null,
+      "elements": [
+        {
+          "id": "e1",
+          "type": "text",
+          "transform": {
+            "x": 124,
+            "y": 26,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 0,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "静\n夜\n思",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 11,
+            "line_height": 1.15,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 13.2,
+              "h": 37.96
+            },
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "标题"
+        },
+        {
+          "id": "e2",
+          "type": "text",
+          "transform": {
+            "x": 113,
+            "y": 70,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 1,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "李\n白",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 7,
+            "line_height": 1.15,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 8.4,
+              "h": 16.11
+            },
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "作者"
+        },
+        {
+          "id": "e3",
+          "type": "text",
+          "transform": {
+            "x": 90,
+            "y": 26,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 2,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "床\n前\n明\n月\n光",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 13,
+            "line_height": 1.18,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 15.6,
+              "h": 76.71
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "第1句"
+        },
+        {
+          "id": "e4",
+          "type": "text",
+          "transform": {
+            "x": 68,
+            "y": 26,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 3,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "疑\n是\n地\n上\n霜",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 13,
+            "line_height": 1.18,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 15.6,
+              "h": 76.71
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "第2句"
+        },
+        {
+          "id": "e5",
+          "type": "text",
+          "transform": {
+            "x": 46,
+            "y": 26,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 4,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "举\n头\n望\n明\n月",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 13,
+            "line_height": 1.18,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 15.6,
+              "h": 76.71
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "第3句"
+        },
+        {
+          "id": "e6",
+          "type": "text",
+          "transform": {
+            "x": 24,
+            "y": 26,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 5,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "低\n头\n思\n故\n乡",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 13,
+            "line_height": 1.18,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 15.6,
+              "h": 76.71
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "第4句"
+        },
+        {
+          "id": "e7",
+          "type": "text",
+          "transform": {
+            "x": 12,
+            "y": 192,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 6,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{note}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 5,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "L",
+            "box": {
+              "w": 60,
+              "h": 6.01
+            },
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "题记"
+        }
+      ]
+    }
+  ]
+}

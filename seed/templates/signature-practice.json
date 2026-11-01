@@ -1,0 +1,666 @@
+{
+  "version": 1,
+  "name": "签名练习",
+  "variables": [
+    {
+      "name": "name",
+      "default": "张三",
+      "type": "text",
+      "label": "姓名"
+    }
+  ],
+  "paper": {
+    "paper_id": "a4-normal",
+    "spec": null
+  },
+  "print": {
+    "optimize": true
+  },
+  "pages": [
+    {
+      "id": "p1",
+      "paper": null,
+      "origin": null,
+      "elements": [
+        {
+          "id": "e1",
+          "type": "text",
+          "transform": {
+            "x": 20,
+            "y": 14,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 0,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "签名练习：{{name}}",
+            "font_id": "open-hei-stroke",
+            "size_mm": 7,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "L",
+            "box": {
+              "w": 170,
+              "h": 8.41
+            },
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "标题"
+        },
+        {
+          "id": "e2",
+          "type": "shape",
+          "transform": {
+            "x": 20,
+            "y": 48,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 1,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "基线"
+        },
+        {
+          "id": "e3",
+          "type": "text",
+          "transform": {
+            "x": 22,
+            "y": 34,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 2,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{name}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 12,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "L",
+            "box": null,
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "示范签名"
+        },
+        {
+          "id": "e4",
+          "type": "shape",
+          "transform": {
+            "x": 20,
+            "y": 69,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 3,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "基线"
+        },
+        {
+          "id": "e5",
+          "type": "shape",
+          "transform": {
+            "x": 20,
+            "y": 90,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 4,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "基线"
+        },
+        {
+          "id": "e6",
+          "type": "text",
+          "transform": {
+            "x": 22,
+            "y": 76,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 5,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{name}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 12,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "L",
+            "box": null,
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 3,
+            "missing_glyph": "box"
+          },
+          "name": "示范签名"
+        },
+        {
+          "id": "e7",
+          "type": "shape",
+          "transform": {
+            "x": 20,
+            "y": 111,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 6,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "基线"
+        },
+        {
+          "id": "e8",
+          "type": "shape",
+          "transform": {
+            "x": 20,
+            "y": 132,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 7,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "基线"
+        },
+        {
+          "id": "e9",
+          "type": "text",
+          "transform": {
+            "x": 22,
+            "y": 118,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 8,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{name}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 12,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "L",
+            "box": null,
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 5,
+            "missing_glyph": "box"
+          },
+          "name": "示范签名"
+        },
+        {
+          "id": "e10",
+          "type": "shape",
+          "transform": {
+            "x": 20,
+            "y": 153,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 9,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "基线"
+        },
+        {
+          "id": "e11",
+          "type": "shape",
+          "transform": {
+            "x": 20,
+            "y": 174,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 10,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "基线"
+        },
+        {
+          "id": "e12",
+          "type": "text",
+          "transform": {
+            "x": 22,
+            "y": 160,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 11,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{name}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 12,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "L",
+            "box": null,
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 7,
+            "missing_glyph": "box"
+          },
+          "name": "示范签名"
+        },
+        {
+          "id": "e13",
+          "type": "shape",
+          "transform": {
+            "x": 20,
+            "y": 195,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 12,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "基线"
+        },
+        {
+          "id": "e14",
+          "type": "shape",
+          "transform": {
+            "x": 20,
+            "y": 216,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 13,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "基线"
+        },
+        {
+          "id": "e15",
+          "type": "text",
+          "transform": {
+            "x": 22,
+            "y": 202,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 14,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{name}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 12,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "L",
+            "box": null,
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 9,
+            "missing_glyph": "box"
+          },
+          "name": "示范签名"
+        },
+        {
+          "id": "e16",
+          "type": "shape",
+          "transform": {
+            "x": 20,
+            "y": 237,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 15,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "基线"
+        },
+        {
+          "id": "e17",
+          "type": "shape",
+          "transform": {
+            "x": 20,
+            "y": 258,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 16,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "基线"
+        },
+        {
+          "id": "e18",
+          "type": "text",
+          "transform": {
+            "x": 22,
+            "y": 244,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 17,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{name}}",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 12,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "L",
+            "box": null,
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 11,
+            "missing_glyph": "box"
+          },
+          "name": "示范签名"
+        },
+        {
+          "id": "e19",
+          "type": "shape",
+          "transform": {
+            "x": 20,
+            "y": 279,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 18,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                170,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "基线"
+        }
+      ]
+    }
+  ]
+}

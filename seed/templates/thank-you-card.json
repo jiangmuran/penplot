@@ -1,0 +1,245 @@
+{
+  "version": 1,
+  "name": "感谢卡",
+  "variables": [
+    {
+      "name": "name",
+      "default": "王老师",
+      "type": "text",
+      "label": "致"
+    },
+    {
+      "name": "from",
+      "default": "小李",
+      "type": "text",
+      "label": "落款"
+    }
+  ],
+  "paper": {
+    "paper_id": "postcard-148x100",
+    "spec": {
+      "name": "明信片 148×100",
+      "width_mm": 100,
+      "height_mm": 148,
+      "margins": {
+        "l": 0,
+        "r": 0,
+        "t": 0,
+        "b": 0
+      },
+      "orientation": "landscape",
+      "rotation": 0,
+      "ruling": {
+        "line_num": 20,
+        "line_gap": 0.0,
+        "line_gap_offset": 0.0,
+        "base_line": 1.0
+      }
+    }
+  },
+  "print": {
+    "optimize": true
+  },
+  "pages": [
+    {
+      "id": "p1",
+      "paper": null,
+      "origin": null,
+      "elements": [
+        {
+          "id": "e1",
+          "type": "shape",
+          "transform": {
+            "x": 5,
+            "y": 5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 0,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "rect",
+            "w": 138,
+            "h": 90,
+            "hatch": null
+          },
+          "name": "外框"
+        },
+        {
+          "id": "e2",
+          "type": "shape",
+          "transform": {
+            "x": 7.5,
+            "y": 7.5,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 1,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "rect",
+            "w": 133,
+            "h": 85,
+            "hatch": null
+          },
+          "name": "内框"
+        },
+        {
+          "id": "e3",
+          "type": "text",
+          "transform": {
+            "x": 10,
+            "y": 13,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 2,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "谢谢你",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 13,
+            "line_height": 1.2,
+            "char_space": 0.0,
+            "align": "C",
+            "box": {
+              "w": 128,
+              "h": 15.61
+            },
+            "jitter": {},
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "标题"
+        },
+        {
+          "id": "e4",
+          "type": "shape",
+          "transform": {
+            "x": 54,
+            "y": 32,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 3,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "kind": "line",
+            "points": [
+              [
+                0,
+                0
+              ],
+              [
+                40,
+                0
+              ]
+            ],
+            "closed": false
+          },
+          "name": "装饰线"
+        },
+        {
+          "id": "e5",
+          "type": "text",
+          "transform": {
+            "x": 16,
+            "y": 38,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 4,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{name}}：\n谢谢你一直以来的帮助与陪伴，\n这份心意，我都记在心里。",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 5.5,
+            "line_height": 1.6,
+            "char_space": 0.0,
+            "align": "L",
+            "box": {
+              "w": 118,
+              "h": 26.41
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "正文"
+        },
+        {
+          "id": "e6",
+          "type": "text",
+          "transform": {
+            "x": 16,
+            "y": 74,
+            "scale": 1,
+            "sx": 1,
+            "sy": 1,
+            "rotation": 0
+          },
+          "z": 5,
+          "locked": false,
+          "hidden": false,
+          "pen": 1,
+          "props": {
+            "text": "{{from}} 敬上",
+            "font_id": "open-wenkai-stroke",
+            "size_mm": 5.5,
+            "line_height": 1.4,
+            "char_space": 0.0,
+            "align": "R",
+            "box": {
+              "w": 118,
+              "h": 7.71
+            },
+            "jitter": {
+              "randomY": 0.04,
+              "randomRotate": [
+                -2,
+                2
+              ],
+              "randomFontSize": [
+                0.96,
+                1.04
+              ]
+            },
+            "seed": 1,
+            "missing_glyph": "box"
+          },
+          "name": "落款"
+        }
+      ]
+    }
+  ]
+}

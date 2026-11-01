@@ -1,0 +1,7 @@
+node_modules/
+.webui-dist/
+.run/
+.auth/
+.precompress-report.json
+test-results/
+playwright-report/

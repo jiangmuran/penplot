@@ -1,0 +1,326 @@
+{
+  "version": 1,
+  "templates": [
+    {
+      "id": "birthday-card",
+      "file": "birthday-card.json",
+      "name": "生日贺卡",
+      "category": "贺卡",
+      "description": "A5 横向对折贺卡，写在右半边内页：大标题、祝福语和落款，带蛋糕简笔画。",
+      "tags": [
+        "生日",
+        "对折",
+        "变量"
+      ],
+      "sample_data": null,
+      "preview": "previews/birthday-card.png",
+      "preview_svg": "previews/birthday-card.svg",
+      "variables": [
+        "name",
+        "from",
+        "date"
+      ],
+      "fonts": [
+        "open-hei-stroke",
+        "open-wenkai-stroke"
+      ],
+      "paper_id": "card-a5-fold"
+    },
+    {
+      "id": "thank-you-card",
+      "file": "thank-you-card.json",
+      "name": "感谢卡",
+      "category": "贺卡",
+      "description": "明信片大小的感谢卡：双线边框、“谢谢你”标题、正文和落款。",
+      "tags": [
+        "感谢",
+        "变量"
+      ],
+      "sample_data": null,
+      "preview": "previews/thank-you-card.png",
+      "preview_svg": "previews/thank-you-card.svg",
+      "variables": [
+        "name",
+        "from"
+      ],
+      "fonts": [
+        "open-wenkai-stroke"
+      ],
+      "paper_id": "postcard-148x100"
+    },
+    {
+      "id": "postcard",
+      "file": "postcard.json",
+      "name": "明信片",
+      "category": "贺卡",
+      "description": "148×100 明信片：左半写话，右半是邮编框、邮票框和收件人地址（{{name}} / {{address}} / {{postcode}}）。",
+      "tags": [
+        "明信片",
+        "地址",
+        "批量"
+      ],
+      "sample_data": "samples/addresses.csv",
+      "preview": "previews/postcard.png",
+      "preview_svg": "previews/postcard.svg",
+      "variables": [
+        "name",
+        "address",
+        "postcode",
+        "message"
+      ],
+      "fonts": [
+        "open-wenkai-stroke",
+        "penplot-sans"
+      ],
+      "paper_id": "postcard-148x100"
+    },
+    {
+      "id": "envelope-cn5",
+      "file": "envelope-cn5.json",
+      "name": "信封地址（中式 5 号）",
+      "category": "信封",
+      "description": "220×110 中式 5 号信封正面：左上邮编、收件地址与姓名、右下寄件人。配合 samples/addresses.csv 批量书写。",
+      "tags": [
+        "信封",
+        "地址",
+        "批量"
+      ],
+      "sample_data": "samples/addresses.csv",
+      "preview": "previews/envelope-cn5.png",
+      "preview_svg": "previews/envelope-cn5.svg",
+      "variables": [
+        "name",
+        "address",
+        "postcode",
+        "sender_address",
+        "sender_postcode"
+      ],
+      "fonts": [
+        "open-wenkai-stroke",
+        "penplot-sans"
+      ],
+      "paper_id": "envelope-cn5"
+    },
+    {
+      "id": "sticky-note",
+      "file": "sticky-note.json",
+      "name": "便签",
+      "category": "便签",
+      "description": "76×76 方形便利贴：标题、待办三行、日期。",
+      "tags": [
+        "便签",
+        "待办"
+      ],
+      "sample_data": null,
+      "preview": "previews/sticky-note.png",
+      "preview_svg": "previews/sticky-note.svg",
+      "variables": [
+        "title",
+        "content",
+        "date"
+      ],
+      "fonts": [
+        "open-wenkai-stroke"
+      ],
+      "paper_id": "sticky-76"
+    },
+    {
+      "id": "signature-practice",
+      "file": "signature-practice.json",
+      "name": "签名练习",
+      "category": "练字",
+      "description": "A4 签名练习纸：每行一个签名示范，后面留出空白基线自己练。",
+      "tags": [
+        "签名",
+        "练字"
+      ],
+      "sample_data": null,
+      "preview": "previews/signature-practice.png",
+      "preview_svg": "previews/signature-practice.svg",
+      "variables": [
+        "name"
+      ],
+      "fonts": [
+        "open-hei-stroke",
+        "open-wenkai-stroke"
+      ],
+      "paper_id": "a4-normal"
+    },
+    {
+      "id": "calligraphy-tian",
+      "file": "calligraphy-tian.json",
+      "name": "书法字帖（田字格）",
+      "category": "练字",
+      "description": "A4 田字格字帖：10×12 格，第一列是楷体示范字，后面描红留白。",
+      "tags": [
+        "字帖",
+        "田字格"
+      ],
+      "sample_data": null,
+      "preview": "previews/calligraphy-tian.png",
+      "preview_svg": "previews/calligraphy-tian.svg",
+      "variables": [
+        "title",
+        "chars"
+      ],
+      "fonts": [
+        "open-wenkai-stroke"
+      ],
+      "paper_id": "a4-normal"
+    },
+    {
+      "id": "poem-vertical",
+      "file": "poem-vertical.json",
+      "name": "诗词竖排",
+      "category": "诗词",
+      "description": "A5 竖排古诗：从右往左，每列一句，标题与作者在最右侧。",
+      "tags": [
+        "诗词",
+        "竖排"
+      ],
+      "sample_data": null,
+      "preview": "previews/poem-vertical.png",
+      "preview_svg": "previews/poem-vertical.svg",
+      "variables": [
+        "note"
+      ],
+      "fonts": [
+        "open-wenkai-stroke"
+      ],
+      "paper_id": "a5"
+    },
+    {
+      "id": "poem-horizontal",
+      "file": "poem-horizontal.json",
+      "name": "诗词横排",
+      "category": "诗词",
+      "description": "A5 横向：居中标题、作者、正文，适合宋词。",
+      "tags": [
+        "诗词",
+        "横排"
+      ],
+      "sample_data": null,
+      "preview": "previews/poem-horizontal.png",
+      "preview_svg": "previews/poem-horizontal.svg",
+      "variables": [],
+      "fonts": [
+        "open-wenkai-stroke"
+      ],
+      "paper_id": "a5-landscape"
+    },
+    {
+      "id": "menu",
+      "file": "menu.json",
+      "name": "菜单",
+      "category": "活动",
+      "description": "A4 菜单：店名标题、四个分类、菜名左对齐、价格右对齐。",
+      "tags": [
+        "菜单",
+        "餐厅"
+      ],
+      "sample_data": null,
+      "preview": "previews/menu.png",
+      "preview_svg": "previews/menu.svg",
+      "variables": [
+        "title",
+        "subtitle"
+      ],
+      "fonts": [
+        "open-hei-stroke",
+        "open-wenkai-stroke",
+        "penplot-sans"
+      ],
+      "paper_id": "a4-normal"
+    },
+    {
+      "id": "place-card",
+      "file": "place-card.json",
+      "name": "席位卡",
+      "category": "活动",
+      "description": "100×100 卡纸对折成 100×50 帐篷卡：两面都写名字（上半部分倒写，折起后两侧都正着看）。用 samples/guests.csv 批量。",
+      "tags": [
+        "席位卡",
+        "婚礼",
+        "批量"
+      ],
+      "sample_data": "samples/guests.csv",
+      "preview": "previews/place-card.png",
+      "preview_svg": "previews/place-card.svg",
+      "variables": [
+        "name",
+        "table"
+      ],
+      "fonts": [
+        "open-hei-stroke",
+        "open-wenkai-stroke"
+      ],
+      "paper_id": "place-card-100"
+    },
+    {
+      "id": "letter",
+      "file": "letter.json",
+      "name": "通知函（批量信件）",
+      "category": "信件",
+      "description": "A4 信纸流式正文：抬头 {{name}}，正文自动换行换页，落款与日期。配合 samples/addresses.csv 批量。",
+      "tags": [
+        "信件",
+        "批量",
+        "流式"
+      ],
+      "sample_data": "samples/addresses.csv",
+      "preview": "previews/letter.png",
+      "preview_svg": "previews/letter.svg",
+      "variables": [
+        "name",
+        "from",
+        "date"
+      ],
+      "fonts": [
+        "open-wenkai-stroke"
+      ],
+      "paper_id": "a4-normal"
+    },
+    {
+      "id": "lined-paper",
+      "file": "lined-paper.json",
+      "name": "横线信纸",
+      "category": "作业纸",
+      "description": "A4 小一圈（200×287）横线信纸：只画格线，适合手写或配合流式文字。",
+      "tags": [
+        "信纸",
+        "横线"
+      ],
+      "sample_data": null,
+      "preview": "previews/lined-paper.png",
+      "preview_svg": "previews/lined-paper.svg",
+      "variables": [
+        "title"
+      ],
+      "fonts": [
+        "open-hei-stroke"
+      ],
+      "paper_id": "a4-inset"
+    },
+    {
+      "id": "english-four-line",
+      "file": "english-four-line.json",
+      "name": "英文四线格",
+      "category": "练字",
+      "description": "A4 英文四线三格：每组上两条细线、红线（基线）与下线，第一行带示范字母。",
+      "tags": [
+        "英文",
+        "练字"
+      ],
+      "sample_data": null,
+      "preview": "previews/english-four-line.png",
+      "preview_svg": "previews/english-four-line.svg",
+      "variables": [
+        "sample"
+      ],
+      "fonts": [
+        "penplot-sans"
+      ],
+      "paper_id": "a4-normal"
+    }
+  ]
+}
